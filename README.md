@@ -9,4 +9,4 @@ npm run publish - для публикации приложения на netlify 
 Макет https://www.figma.com/file/TzjkKKq7aIREG3VImMU4jJ/Chat?node-id=0%3A1
 
 
-ссылка на реквест: https://github.com/EgorEres/multi_chat/pull/2
+ссылка на реквест: https://github.com/EgorEres/middle.messenger.praktikum.yandex/pull/1
