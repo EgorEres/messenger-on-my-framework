@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  color: #474563;
+  background: #CAEDEF;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.position-on-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}

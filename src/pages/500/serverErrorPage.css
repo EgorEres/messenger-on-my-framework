@@ -1,0 +1,15 @@
+.wrapper * {
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+}
+
+.wrapper p{
+  font-size: 130px;
+  font-weight: bold;
+}
+
+.wrapper a {
+  cursor: pointer;
+  color: #3369F3;
+}
