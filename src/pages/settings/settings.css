@@ -1,0 +1,63 @@
+.wrapper {
+  background-color: #CAEDEF;
+}
+
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 100px;
+  cursor: pointer;
+  border: 1px solid #000;
+  border-radius: 50%;
+  margin: auto;
+  margin-bottom: 30px;
+}
+
+.inputs-block {
+  width: 350px;
+  margin: auto;
+}
+
+.inputs-block span {
+  width: 100%;
+  font-size: 14px;
+}
+
+.inputs-block input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px 20px;
+  margin-bottom: 5px;
+  background: #3C8084;
+  border: none;
+  height: 40px;
+  color: #fff;
+}
+
+.password_tip {
+  padding-top: 20px;
+  padding-bottom: 5px;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.button-save {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 25px;
+}
+
+.button-save button {
+  padding: 12px 25px;
+  border: none;
+  background: #1e6367;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.button-save button:hover {
+  cursor: pointer;
+  background: #428e92;
+}

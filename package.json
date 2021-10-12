@@ -1,0 +1,35 @@
+{
+  "name": "multi_chat",
+  "version": "1.0.0",
+  "description": "",
+  "browserslist": "> 0.5%, last 2 versions",
+  "scripts": {
+    "start": "parcel static/settings.html -p 3000 --no-source-maps",
+    "build": "parcel build static/index.html static/404.html static/500.html static/chats.html static/registration.html static/settings.html --no-cache",
+    "start-server": "node server.js"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EgorEres/multi_chat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EgorEres/multi_chat/issues"
+  },
+  "homepage": "https://github.com/EgorEres/multi_chat#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5",
+    "parcel-plugin-handlebars-precompile": "^1.0.2",
+    "postcss": "^8.3.6",
+    "postcss-modules": "^3.2.2"
+  },
+  "dependencies": {
+    "autoprefixer": "^9.8.6",
+    "express": "^4.17.1",
+    "handlebars": "^4.7.7"
+  },
+  "main": "index.js",
+  "keywords": []
+}
