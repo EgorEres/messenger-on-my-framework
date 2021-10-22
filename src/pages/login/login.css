@@ -45,18 +45,18 @@
 }
 
 .buttons-block button:first-child {
-  background: #3369F3;
+  background: #3369f3;
   color: #fff;
   margin-bottom: 5px;
 }
 
-.buttons-block button:first-child:hover {
-  background: #5982e9;
-}
-
 .buttons-block button:last-child {
   background: #fff;
-  color: #3369F3;
+  color: #3369f3;
+}
+
+.buttons-block button:first-child:hover {
+  background: #5982e9;
 }
 
 .buttons-block button:last-child:hover {

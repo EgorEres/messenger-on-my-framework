@@ -1,6 +1,7 @@
 import "./registration.css"
 import { registrationTemplate } from "./registrationTemplate"
 import Handlebars from 'handlebars'
+let x = "dfsdf";
 
 const data = {
   inputs: [{

@@ -12,4 +12,4 @@ export const registrationTemplate = `<div class='_registration__registration-wra
       <button id='registration-sign-in'><a href="./">Войти</a></button>
     </div>
   </div>
-</div>`
+</div>`;
