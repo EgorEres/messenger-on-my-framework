@@ -3,8 +3,7 @@ export const loginTemplate = `<div class='_login__login-wrapper'>
     <h2>Вход</h2>
     <div class='_login__inputs-block'>
       {{#each inputs}}
-        <span>{{this.name}}</span>
-        <input name='{{this.inputName}}' type='{{this.type}}' />
+        {{{input}}}
       {{/each}}
     </div>
     <div class='_login__buttons-block'>

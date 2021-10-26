@@ -7,7 +7,6 @@ export default class Button extends Block {
   }
 
   render() {
-    console.log('check !!this 22:', this.props)
     return this.compile(this.props);
   }
 }

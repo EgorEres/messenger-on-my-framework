@@ -1,7 +1,9 @@
 import 'styles/chats.css';
 import { chatsTemplate } from './chatsTemplate';
+import Block from '../../modules/block.js'
+import { render } from "../../utils/renderDOM.js";
 
-export const data = {
+const data = {
   urlToSettings: "./settings.html",
   chats: [
     {name: "Foo"}, {name: "Bar"}, {name: "Baz"}
@@ -9,7 +11,15 @@ export const data = {
   emptyText: "Что-бы начать общаться выберите контакт или группу"
 }
 
-document.addEventListener('DOMContentLoaded', () => {
 
-  document.body.innerHTML = chatsTemplate;
-})
+export default class Chats extends Block {
+  constructor(props) {
+    super(chatsTemplate, props)
+  }
+
+  render() {
+    return this.compile(this.props);
+  }
+}
+
+render("body", new Chats(data));

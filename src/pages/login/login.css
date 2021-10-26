@@ -16,6 +16,10 @@
   border-radius: 10px;
 }
 
+.inputs-block {
+  width: 100%;
+}
+
 .inputs-block span {
   width: 100%;
   font-size: 14px;

@@ -1,5 +1,7 @@
 import "styles/registration.css"
 import { registrationTemplate } from "./registrationTemplate"
+import Block from '../../modules/block.js'
+import { render } from "../../utils/renderDOM.js";
 
 export const data = {
   inputs: [{
@@ -33,6 +35,14 @@ export const data = {
   }]
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.body.innerHTML = registrationTemplate;
-})
+export default class Registration extends Block {
+  constructor(props) {
+    super(registrationTemplate, props)
+  }
+
+  render() {
+    return this.compile(this.props);
+  }
+}
+
+render("body", new Registration(data));

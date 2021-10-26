@@ -2,3 +2,5 @@
 /dist
 /.cache
 /.parcel-cache
+/static/sources
+/static/styles

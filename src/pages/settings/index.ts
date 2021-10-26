@@ -1,5 +1,7 @@
 import 'styles/settings.css';
 import { settingsTemplate } from './settingsTemplate';
+import Block from '../../modules/block.js'
+import { render } from "../../utils/renderDOM.js";
 
 export const data = {
   inputs: [{
@@ -34,6 +36,14 @@ export const data = {
   }]
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.body.innerHTML = settingsTemplate;
-})
+export default class Settings extends Block {
+  constructor(props) {
+    super(settingsTemplate, props)
+  }
+
+  render() {
+    return this.compile(this.props);
+  }
+}
+
+render("body", new Settings(data));
