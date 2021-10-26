@@ -3,5 +3,6 @@ export const serverErrorTemplate = `<div class='_global-style__position-on-cente
     <h2>{{description}}</h2>
     <p>{{title}}</p>
     <a href="{{url}}">{{buttonText}}</a>
+    {{{button}}}
   </div>
 </div>`

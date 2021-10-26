@@ -1,0 +1,63 @@
+.wrapper {
+  height: 100vh;
+  display: flex;
+}
+
+.list {
+  width: 300px;
+  background: #469ba0;
+}
+
+.search-wrapper {
+  display: flex;
+  padding: 20px 10px;
+}
+
+.profile-menu {
+  width: 40px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.search {
+  padding: 5px;
+  border: none;
+  background: #5bc9d0;
+  border-radius: 2px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.contact {
+  padding: 10px 5px;
+  margin-bottom: 5px;
+  background: #3c8084;
+}
+
+.contact:hover {
+  cursor: pointer;
+  background: #53b0b5;
+}
+
+.messages {
+  width: 100%;
+  background: #caedef;
+}
+
+.messages-list {
+  height: calc(100vh - 40px);
+}
+
+.messages-place {
+  text-align: center;
+  width: 330px;
+  font-size: 18px;
+}
+
+.message-input {
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  height: 40px;
+  padding: 0 14px;
+}

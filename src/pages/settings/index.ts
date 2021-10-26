@@ -1,8 +1,7 @@
-import './settings.css';
+import 'styles/settings.css';
 import { settingsTemplate } from './settingsTemplate';
-import Handlebars from 'handlebars'
 
-const data = {
+export const data = {
   inputs: [{
     name: "Имя",
     type: "text",
@@ -36,7 +35,5 @@ const data = {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const settingsPage = Handlebars.compile(settingsTemplate)(data)
-
-  document.body.innerHTML = settingsPage;
+  document.body.innerHTML = settingsTemplate;
 })

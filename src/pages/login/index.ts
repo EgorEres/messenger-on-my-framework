@@ -1,8 +1,7 @@
-import "./login.css";
-import Handlebars from "handlebars";
+import "styles/login.css";
 import { loginTemplate } from "./loginTemplate";
 
-const data = {
+export const data = {
   inputs: [
     {
       name: "Логин",
@@ -18,7 +17,5 @@ const data = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  const pageLogin = Handlebars.compile(loginTemplate)(data);
-
-  document.body.innerHTML = pageLogin;
+  document.body.innerHTML = loginTemplate;
 });

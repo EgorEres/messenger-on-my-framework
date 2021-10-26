@@ -1,8 +1,7 @@
-import './chats.css';
+import 'styles/chats.css';
 import { chatsTemplate } from './chatsTemplate';
-import Handlebars from 'handlebars'
 
-const data = {
+export const data = {
   urlToSettings: "./settings.html",
   chats: [
     {name: "Foo"}, {name: "Bar"}, {name: "Baz"}
@@ -11,7 +10,6 @@ const data = {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const pageChats = Handlebars.compile(chatsTemplate)(data);
 
-  document.body.innerHTML = pageChats;
+  document.body.innerHTML = chatsTemplate;
 })

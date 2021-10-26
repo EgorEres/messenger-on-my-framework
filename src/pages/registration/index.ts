@@ -1,9 +1,7 @@
-import "./registration.css"
+import "styles/registration.css"
 import { registrationTemplate } from "./registrationTemplate"
-import Handlebars from 'handlebars'
-let x = "dfsdf";
 
-const data = {
+export const data = {
   inputs: [{
     name: "Имя",
     type: "text",
@@ -36,6 +34,5 @@ const data = {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const regPage = Handlebars.compile(registrationTemplate)(data)
-  document.body.innerHTML = regPage;
+  document.body.innerHTML = registrationTemplate;
 })

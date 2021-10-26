@@ -1,3 +1,12 @@
+:root {
+  --main-color: #1e6367;
+  --main-bg-color: #caedef;
+  --border-color: #4f9b9f;
+  --bg-elem-color: #caedef;
+  --second-bg-color: #62c8ce;
+  --default-color: #fff;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,8 +14,8 @@
 
 body {
   font-family: 'Noto Sans JP', sans-serif;
-  color: #474563;
-  background: #CAEDEF;
+  color: var(--main-color);
+  background: var(--main-bg-color);
 }
 
 a {
@@ -19,4 +28,16 @@ a {
   align-items: center;
   justify-content: center;
   height: 100vh;
+}
+
+input {
+  height: 35px;
+  box-sizing: border-box;
+  padding: 0 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  outline: none;
+  text-align: left;
+  color: var(--main-color);
+  background: var(--bg-elem-color);
 }
