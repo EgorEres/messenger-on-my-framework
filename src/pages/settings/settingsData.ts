@@ -50,7 +50,7 @@ const data = {
       passInput: new Input({
         name: "Пароль",
         type: "password",
-        inputName: "repeat-password",
+        inputName: "repeat_password",
       }).render(),
     },
   ],
@@ -60,7 +60,6 @@ const data = {
         className: "_global-style__secondary-button",
         id: "save-settings-button",
         buttonText: "Сохранить",
-        onClickAction: () => goToPage("chats"),
       }).render(),
     },
     {

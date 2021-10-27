@@ -1,5 +1,5 @@
 const settingsTemplate = `<div class='_global-style__position-on-center _settings__wrapper'>
-  <div>
+  <div class='_settings__settings-block'>
     <div class='_settings__avatar'>Avatar</div>
     <div>
       <div class='_settings__inputs-block'>

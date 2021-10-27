@@ -1,6 +1,6 @@
 import Input from "../../components/Input/input";
 import Button from "../../components/Button/button";
-// import goToPage from "../../utils/goToPage";
+import goToPage from "../../utils/goToPage";
 
 const data = {
   inputs: [
@@ -33,7 +33,7 @@ const data = {
         className: "_global-style__secondary-button",
         id: "login-sign-up",
         buttonText: "Зарегистрироваться",
-        // onClickAction: () => goToPage("registration"),
+        onClickAction: () => goToPage("registration"),
       }).render(),
     },
   ],

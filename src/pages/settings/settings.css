@@ -2,6 +2,17 @@
   background-color: #caedef;
 }
 
+.settings-block {
+  width: 350px;
+  background: var(--modal-bg-color);
+  height: 700px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 30px;
+  border-radius: 10px;
+}
+
 .avatar {
   display: flex;
   justify-content: center;
@@ -23,17 +34,6 @@
 .inputs-block span {
   width: 100%;
   font-size: 14px;
-}
-
-.inputs-block input {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 5px 20px;
-  margin-bottom: 5px;
-  background: #3c8084;
-  border: none;
-  height: 40px;
-  color: #fff;
 }
 
 .password_tip {
