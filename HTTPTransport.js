@@ -21,7 +21,7 @@ function setXHRHeaders(xhr, headers) {
 
 class HTTPTransport {
   get(url, options = {}) {
-    const query = queryStringify(data);
+    const query = queryStringify(options.data);
     const urlWithParams = query ? `${url}?${query}` : url;
 
     return this.request(
