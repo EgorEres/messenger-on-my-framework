@@ -1,5 +1,5 @@
 .wrapper {
-  background-color: #CAEDEF;
+  background-color: #caedef;
 }
 
 .avatar {
@@ -30,7 +30,7 @@
   box-sizing: border-box;
   padding: 5px 20px;
   margin-bottom: 5px;
-  background: #3C8084;
+  background: #3c8084;
   border: none;
   height: 40px;
   color: #fff;
@@ -46,18 +46,6 @@
 .button-save {
   display: flex;
   justify-content: space-between;
-  padding-top: 25px;
-}
-
-.button-save button {
-  padding: 12px 25px;
-  border: none;
-  background: #1e6367;
-  color: #fff;
-  border-radius: 10px;
-}
-
-.button-save button:hover {
-  cursor: pointer;
-  background: #428e92;
+  gap: 10px;
+  padding-top: 20px;
 }

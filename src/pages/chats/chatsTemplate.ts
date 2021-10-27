@@ -1,4 +1,4 @@
-export const chatsTemplate = `<div>
+const chatsTemplate = `<div>
   <div class='_chats__wrapper'>
     <div class='_chats__list'>
       <div class='_chats__search-wrapper'>
@@ -35,4 +35,6 @@ export const chatsTemplate = `<div>
       <input type="text" class='_chats__message-input' />
     </div>
   </div>
-</div>`
+</div>`;
+
+export default chatsTemplate;

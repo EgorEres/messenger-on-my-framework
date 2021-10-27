@@ -1,37 +1,39 @@
-type Listeners = Record<string, Function[]>
+type Listeners = Record<string, Function[]>;
 
-export class EventBus {
-  listeners: Listeners
+class EventBus {
+  listeners: Listeners;
 
   constructor() {
-    this.listeners = {}
+    this.listeners = {};
   }
 
   on(event: string, cb: Function) {
     if (!this.listeners[event]) {
-      this.listeners[event] = [cb]
+      this.listeners[event] = [cb];
     } else {
-      this.listeners[event].push(cb)
+      this.listeners[event].push(cb);
     }
   }
 
   emit(event: string, ...args: any) {
-    if(!this.listeners[event]) {
-      throw new Error(`Have not event by name: ${event}`)
+    if (!this.listeners[event]) {
+      throw new Error(`Have not event by name: ${event}`);
     } else {
-      this.listeners[event].forEach(listener => {
-          listener(...args)
-      })
+      this.listeners[event].forEach((listener) => {
+        listener(...args);
+      });
     }
   }
 
   off(event: string, cb: Function) {
-    if(!this.listeners[event]) {
-      throw new Error(`Have not event by name: ${event}`)
+    if (!this.listeners[event]) {
+      throw new Error(`Have not event by name: ${event}`);
     } else {
       this.listeners[event] = this.listeners[event].filter(
-        listener => listener !== cb
-      )
+        (listener) => listener !== cb
+      );
     }
   }
 }
+
+export default EventBus;

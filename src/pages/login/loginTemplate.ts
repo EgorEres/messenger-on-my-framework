@@ -1,17 +1,19 @@
-export const loginTemplate = `<div class='_login__login-wrapper'>
-  <div class='_login__login-block'>
-    <h2>Вход</h2>
-    <div class='_login__inputs-block'>
-      {{#each inputs}}
-        {{{input}}}
-      {{/each}}
-    </div>
-    <div class='_login__buttons-block'>
-      <button id='login-sign-in'><a href="./chats.html">Войти</a></button>
-      <button id='login-sign-up'><a href="./registration.html">Зарегистрироваться</a></button>
-    </div>
-  </div>
-</div>`
+const loginTemplate = `<div class='_login__login-wrapper'>
+  <form id='login-sign-in-form'>
+    <div class='_login__login-block'>
+      <h2>Вход</h2>
+      <div class='_login__inputs-block'>
+        {{#each inputs}}
+          {{{input}}}
+        {{/each}}
+      </div>
+      <div class='_login__buttons-block'>
+        {{#each buttons}}
+          {{{button}}}
+        {{/each}}
+      </div>
+      </div>
+  </form>
+</div>`;
 
-
-
+export default loginTemplate;

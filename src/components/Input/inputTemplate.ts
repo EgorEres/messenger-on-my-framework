@@ -1,6 +1,8 @@
-export const inputTemplate = `
+const inputTemplate = `
   <div class="{{className}}">
-    <span>{{this.name}}</span>
-    <input name='{{this.inputName}}' type='{{this.type}}' />
+    <span>{{name}}</span>
+    <input id='{{id}}' name='{{inputName}}' type='{{type}}' value='{{value}}' />
   </div>
-`
+`;
+
+export default inputTemplate;

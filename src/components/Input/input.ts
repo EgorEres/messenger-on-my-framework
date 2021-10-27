@@ -1,9 +1,9 @@
-import Block from '../../modules/block.js'
-import { inputTemplate } from './inputTemplate.js'
+import Block from "../../modules/block";
+import inputTemplate from "./inputTemplate";
 
 export default class Input extends Block {
   constructor(props) {
-    super(inputTemplate, props)
+    super(inputTemplate, props);
   }
 
   render() {

@@ -10,7 +10,8 @@
     "copy:css": "copyfiles src/**/*.css -f static/styles/",
     "build:html": "parcel build static/*.html --no-cache --no-source-maps",
     "build:ts": "npm run clean && tsc --build ./tsconfig.json",
-    "build": "npm run build:ts && npm run copy:css && npm run build:html"
+    "build": "npm run build:ts && npm run copy:css && npm run build:html",
+    "lint": "eslint . --ext .ts"
   },
   "repository": {
     "type": "git",
@@ -28,10 +29,12 @@
     "copyfiles": "^2.4.1",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb-typescript": "^14.0.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.26.1",
     "parcel-bundler": "^1.12.5",
     "parcel-plugin-handlebars-precompile": "^1.0.2",
     "postcss": "^8.3.6",
