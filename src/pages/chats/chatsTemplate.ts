@@ -1,4 +1,4 @@
-const chatsTemplate = `<div>
+const chatsTemplate: string = `<div>
   <div class='_chats__wrapper'>
     <div class='_chats__list'>
       <div class='_chats__search-wrapper'>

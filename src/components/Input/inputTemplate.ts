@@ -1,4 +1,4 @@
-const inputTemplate = `
+const inputTemplate: string = `
   <div class="{{className}}">
     <span>{{name}}</span>
     <input

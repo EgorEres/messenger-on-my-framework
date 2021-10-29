@@ -1,4 +1,4 @@
-const loginTemplate = `<div class='_login__login-wrapper'>
+const loginTemplate: string = `<div class='_login__login-wrapper'>
   <div class='_login__login-block'>
     <h2>Вход</h2>
     <div class='_login__inputs-block'>

@@ -5,7 +5,7 @@ interface ButtonProps {
   className?: string;
   buttonText: string;
   id: string;
-  onClickAction?: null | Function;
+  onClickAction?: Function;
 }
 
 export default class Button extends Block {
@@ -15,12 +15,9 @@ export default class Button extends Block {
 
   componentDidMount() {
     if (this.props.onClickAction) {
-      return document.addEventListener("DOMContentLoaded", () => {
-        const elem = document.getElementById(this.props.id);
-        return elem && elem.addEventListener("click", this.props.onClickAction);
-      });
+      const elem = document.getElementById(this.props.id);
+      elem?.addEventListener("click", this.props.onClickAction);
     }
-    return null;
   }
 
   render() {

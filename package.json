@@ -5,8 +5,9 @@
   "browserslist": "> 0.5%, last 2 versions",
   "scripts": {
     "start": "node server.js",
-    "clean": "rimraf ./static/sources ./static/styles",
-    "copy:css": "copyfiles src/**/*.css -f static/styles/",
+    "start:dev": "parcel static/*.html -p 3000 --no-source-maps",
+    "clean": "rimraf ./dist",
+    "copy:css": "copyfiles src/**/*.css -f ./dist/styles/",
     "build:html": "parcel build static/*.html --no-cache --no-source-maps",
     "build:ts": "npm run clean && tsc --build ./tsconfig.json",
     "build": "npm run build:ts && npm run copy:css && npm run build:html",
@@ -50,7 +51,7 @@
     "handlebars": "^4.7.7"
   },
   "alias": {
-    "styles": "./static/styles/"
+    "styles": "./dist/styles/"
   },
   "main": "index.js",
   "keywords": []

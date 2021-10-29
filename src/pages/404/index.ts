@@ -4,8 +4,9 @@ import Button from "../../components/Button/button";
 import Block from "../../modules/block";
 import render from "../../utils/renderDOM";
 import goToPage from "../../utils/goToPage";
+import { Page404Props } from "./interfaces";
 
-const data = {
+const data: Page404Props = {
   title: "404",
   description: "Такой страницы не существует.",
 
@@ -17,7 +18,7 @@ const data = {
 };
 
 export default class Page404 extends Block {
-  constructor(props) {
+  constructor(props: Page404Props) {
     super(notFoundTemplate, props);
   }
 

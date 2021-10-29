@@ -4,8 +4,9 @@ import Button from "../../components/Button/button";
 import Block from "../../modules/block";
 import render from "../../utils/renderDOM";
 import goToPage from "../../utils/goToPage";
+import { Page500Props } from "./interfaces";
 
-const data = {
+const data: Page500Props = {
   title: "500",
   description: "Что-то пошло не так, уже решаем.",
 
@@ -17,7 +18,7 @@ const data = {
 };
 
 export default class Page500 extends Block {
-  constructor(props) {
+  constructor(props: Page500Props) {
     super(serverErrorTemplate, props);
   }
 

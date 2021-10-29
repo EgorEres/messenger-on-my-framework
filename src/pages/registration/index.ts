@@ -30,45 +30,43 @@ export default class Registration extends Block {
   }
 
   componentDidMount() {
-    return document.addEventListener("DOMContentLoaded", () => {
-      const inputsCollection =
-        document.querySelectorAll<HTMLInputElement>("input");
+    const inputsCollection =
+      document.querySelectorAll<HTMLInputElement>("input");
 
+    inputsCollection.forEach((input) => {
+      input.addEventListener("focus", () => {
+        input.classList.remove(
+          "_global-style__error-validation",
+          "_global-style__success-validation"
+        );
+      });
+      input.addEventListener("blur", () => {
+        const { name, value } = input;
+        const addClass = this.checkValid(name, value)
+          ? "_global-style__success-validation"
+          : "_global-style__error-validation";
+        input.classList.add(addClass);
+      });
+    });
+
+    const regButton = document.getElementById("login-sign-up");
+    regButton?.addEventListener("click", () => {
+      const errorInputsList: string[] = [];
       inputsCollection.forEach((input) => {
-        input.addEventListener("focus", () => {
-          input.classList.remove(
-            "_global-style__error-validation",
-            "_global-style__success-validation"
-          );
-        });
-        input.addEventListener("blur", () => {
-          const { name, value } = input;
-          const addClass = this.checkValid(name, value)
-            ? "_global-style__success-validation"
-            : "_global-style__error-validation";
-          input.classList.add(addClass);
-        });
+        const isValid = this.checkValid(input.name, input.value);
+        const addClass = isValid
+          ? "_global-style__success-validation"
+          : "_global-style__error-validation";
+        input.classList.add(addClass);
+
+        if (!isValid) errorInputsList.push(input.name);
       });
 
-      const regButton = document.getElementById("login-sign-up");
-      regButton?.addEventListener("click", () => {
-        const errorInputsList: string[] = [];
-        inputsCollection.forEach((input) => {
-          const isValid = this.checkValid(input.name, input.value);
-          const addClass = isValid
-            ? "_global-style__success-validation"
-            : "_global-style__error-validation";
-          input.classList.add(addClass);
-
-          if (!isValid) errorInputsList.push(input.name);
-        });
-
-        if (errorInputsList.length) {
-          console.log("Валидация не пройдена", errorInputsList.toString());
-        } else {
-          goToPage("chats");
-        }
-      });
+      if (errorInputsList.length) {
+        console.log("Валидация не пройдена", errorInputsList.toString());
+      } else {
+        goToPage("chats");
+      }
     });
   }
 }

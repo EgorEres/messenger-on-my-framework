@@ -1,8 +1,9 @@
 import Input from "../../components/Input/input";
 import Button from "../../components/Button/button";
 import goToPage from "../../utils/goToPage";
+import { LoginPageProps } from "./interfaces";
 
-const data = {
+const data: LoginPageProps = {
   inputs: [
     {
       input: new Input({
