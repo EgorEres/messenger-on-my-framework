@@ -14,6 +14,8 @@ const settingsTemplate = `<div class='_global-style__position-on-center _setting
           {{#each inputs}}
             {{{passInput}}}
           {{/each}}
+        <span id="_settings__error"></span>
+
         <div class='_settings__button-save'>
           {{#each buttons}}
             {{{button}}}

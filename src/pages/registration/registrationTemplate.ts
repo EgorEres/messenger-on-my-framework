@@ -6,6 +6,7 @@ const registrationTemplate = `<div class='_registration__registration-wrapper'>
         {{{input}}}
       {{/each}}
     </div>
+    <span id="_registration__error"></span>
     <div class='_registration__buttons-block'>
       {{#each buttons}}
         {{{button}}}

@@ -8,7 +8,7 @@
     "start:dev": "parcel static/*.html -p 3000 --no-source-maps",
     "clean": "rimraf ./dist",
     "copy:css": "copyfiles src/**/*.css -f ./dist/styles/",
-    "build:html": "parcel build static/index.html --no-cache --no-source-maps",
+    "build:html": "parcel build static/settings.html --no-cache --no-source-maps",
     "build:ts": "npm run clean && tsc --build ./tsconfig.json",
     "build": "npm run build:ts && npm run copy:css && npm run build:html",
     "lint": "eslint . --ext .ts"

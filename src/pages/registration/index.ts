@@ -31,7 +31,14 @@ export default class Registration extends Block {
 
   componentDidMount() {
     const inputsCollection =
-      document.querySelectorAll<HTMLInputElement>("input");
+      this._element.querySelectorAll<HTMLInputElement>("input");
+    const errorElem = this._element.querySelector(
+      "#_registration__error"
+    ) as HTMLElement;
+
+    this._element
+      ?.querySelector("#login-sign-in")
+      ?.addEventListener("click", () => goToPage("login"));
 
     inputsCollection.forEach((input) => {
       input.addEventListener("focus", () => {
@@ -49,7 +56,7 @@ export default class Registration extends Block {
       });
     });
 
-    const regButton = document.getElementById("login-sign-up");
+    const regButton = this._element.querySelector("#login-sign-up");
     regButton?.addEventListener("click", () => {
       const errorInputsList: string[] = [];
       inputsCollection.forEach((input) => {
@@ -63,7 +70,9 @@ export default class Registration extends Block {
       });
 
       if (errorInputsList.length) {
-        console.log("Валидация не пройдена", errorInputsList.toString());
+        errorElem.innerHTML = `Валидация не пройдена у полей ${errorInputsList.join(
+          " "
+        )}`;
       } else {
         goToPage("chats");
       }

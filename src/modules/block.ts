@@ -2,11 +2,6 @@ import EventBus from "./eventBus";
 
 declare const Handlebars;
 
-export interface CbEventsInterface {
-  name: string;
-  callback: EventListener;
-}
-
 export default class Block {
   static EVENTS = {
     FLOW_CWM: "flow:component-will-mount",

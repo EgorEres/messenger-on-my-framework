@@ -41,14 +41,14 @@ const data = {
     },
     {
       passInput: new Input({
-        name: "Повторите пароль",
+        name: "Повторите пароль (пока можно только 1234)",
         type: "password",
         inputName: "password",
       }).render(),
     },
     {
       passInput: new Input({
-        name: "Пароль",
+        name: "Пароль (пока можно только 1234)",
         type: "password",
         inputName: "repeat_password",
       }).render(),

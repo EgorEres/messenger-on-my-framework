@@ -30,7 +30,14 @@ export default class Settings extends Block {
 
   componentDidMount() {
     const inputsCollection =
-      document.querySelectorAll<HTMLInputElement>("input");
+      this._element.querySelectorAll<HTMLInputElement>("input");
+    const errorElem = this._element.querySelector(
+      "#_settings__error"
+    ) as HTMLElement;
+
+    this._element
+      ?.querySelector("#logout-button")
+      ?.addEventListener("click", () => goToPage("login"));
 
     inputsCollection.forEach((input) => {
       input.addEventListener("focus", () => {
@@ -48,7 +55,7 @@ export default class Settings extends Block {
       });
     });
 
-    const regButton = document.getElementById("save-settings-button");
+    const regButton = this._element.querySelector("#save-settings-button");
     regButton?.addEventListener("click", () => {
       const errorInputsList: string[] = [];
       inputsCollection.forEach((input) => {
@@ -62,7 +69,9 @@ export default class Settings extends Block {
       });
 
       if (errorInputsList.length) {
-        console.log("Валидация не пройдена", errorInputsList.toString());
+        errorElem.innerHTML = `Валидация не пройдена у полей ${errorInputsList.join(
+          " "
+        )}`;
       } else {
         goToPage("chats");
       }

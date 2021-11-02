@@ -41,7 +41,7 @@
 
 .messages {
   width: 100%;
-  background: #caedef;
+  background: var(--bg-elem-color);
 }
 
 .messages-list {
