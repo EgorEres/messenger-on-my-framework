@@ -6,14 +6,15 @@ import render from "../../utils/renderDOM";
 import goToPage from "../../utils/goToPage";
 import { Page500Props } from "./interfaces";
 
+const buttonId: string = "button-page-500";
+
 const data: Page500Props = {
   title: "500",
   description: "Что-то пошло не так, уже решаем.",
 
   button: new Button({
     buttonText: "Вернутся к чатам",
-    id: "page-500",
-    onClickAction: () => goToPage("chats"),
+    id: buttonId,
   }).render(),
 };
 
@@ -22,9 +23,11 @@ export default class Page500 extends Block {
     super(serverErrorTemplate, props);
   }
 
-  render() {
-    return this.compile(this.props);
+  componentDidMount() {
+    this._element
+      .querySelector(`#${buttonId}`)
+      ?.addEventListener("click", () => goToPage("chats"));
   }
 }
 
-render("body", new Page500(data));
+render(new Page500(data));

@@ -9,7 +9,7 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "alwaysStrict": true,
-        "lib": ["dom", "es6"],
+        "lib": ["dom", "es6", "dom.iterable"],
         "outDir": "dist/sources",
     }
 }

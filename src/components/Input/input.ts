@@ -13,8 +13,4 @@ export default class Input extends Block {
   constructor(props: InputProps) {
     super(inputTemplate, props);
   }
-
-  render() {
-    return this.compile(this.props);
-  }
 }

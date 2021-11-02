@@ -12,75 +12,62 @@ export default class Login extends Block {
     super(loginTemplate, props);
   }
 
-  render() {
-    return this.compile(this.props);
-  }
-
   componentDidMount() {
-    const loginInput = document.getElementById(
-      "input-login"
+    this._element
+      ?.querySelector("#login-sign-up")
+      ?.addEventListener("click", () => goToPage("registration"));
+
+    const form = this._element?.querySelector("#login-form") as HTMLFormElement;
+    const errorElem = this._element?.querySelector(
+      "#_login__error"
+    ) as HTMLElement;
+
+    const loginInput = this._element?.querySelector(
+      "#input-login"
     ) as HTMLInputElement;
-    const passwordInput = document.getElementById(
-      "input-password"
+    const passwordInput = this._element?.querySelector(
+      "#input-password"
     ) as HTMLInputElement;
 
-    loginInput.addEventListener("focus", () => {
-      loginInput.classList.remove(
-        "_global-style__error-validation",
-        "_global-style__success-validation"
-      );
-    });
-
-    passwordInput.addEventListener("focus", () => {
-      passwordInput.classList.remove(
-        "_global-style__error-validation",
-        "_global-style__success-validation"
-      );
-    });
-
-    loginInput.addEventListener("blur", () => {
-      if (validation.checkLogin.test(loginInput.value)) {
-        loginInput.classList.add("_global-style__success-validation");
-        console.log(`Валидация не пройдена в ${loginInput.name}`);
-      } else {
-        loginInput.classList.add("_global-style__error-validation");
-        console.log(`Валидация пройдена в ${loginInput.name}`);
-      }
-    });
-
-    passwordInput.addEventListener("blur", () => {
-      if (validation.checkPass.test(passwordInput.value)) {
-        passwordInput.classList.add("_global-style__success-validation");
-        console.log(`Валидация не пройдена в ${passwordInput.name}`);
-      } else {
-        passwordInput.classList.add("_global-style__error-validation");
-        console.log(`Валидация пройдена в ${passwordInput.name}`);
-      }
-    });
-
-    const loginButton = document.getElementById("login-sign-in");
-    loginButton?.addEventListener("click", () => {
-      if (!loginInput.value || !validation.checkLogin.test(loginInput.value)) {
-        loginInput.classList.add("_global-style__error-validation");
-        console.log(`Валидация не пройдена в ${loginInput.name}`);
-      }
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
       if (
-        !passwordInput.value ||
+        !validation.checkLogin.test(loginInput?.value) ||
         !validation.checkPass.test(passwordInput.value)
       ) {
+        loginInput.classList.add("_global-style__error-validation");
         passwordInput.classList.add("_global-style__error-validation");
-        console.log(`Валидация не пройдена в ${passwordInput.name}`);
-      }
-      if (
-        validation.checkLogin.test(loginInput.value) &&
-        validation.checkPass.test(passwordInput.value)
-      ) {
-        loginInput.classList.add("_global-style__success-validation");
-        passwordInput.classList.add("_global-style__success-validation");
-        setTimeout(() => goToPage("chats"), 700);
+        errorElem.innerHTML = "Неверный логин или пароль (пароль пока 1234)";
+      } else {
+        goToPage("chats");
       }
     });
+
+    form.addEventListener(
+      "focus",
+      () => {
+        errorElem.innerHTML = "";
+        loginInput.classList.remove("_global-style__error-validation");
+        passwordInput.classList.remove("_global-style__error-validation");
+      },
+      true
+    );
+
+    form.addEventListener(
+      "blur",
+      () => {
+        if (
+          !validation.checkLogin.test(loginInput?.value) ||
+          !validation.checkPass.test(passwordInput.value)
+        ) {
+          loginInput.classList.add("_global-style__error-validation");
+          passwordInput.classList.add("_global-style__error-validation");
+          errorElem.innerHTML = "Неверный логин или пароль (пароль пока 1234)";
+        }
+      },
+      true
+    );
   }
 }
 
-render("body", new Login(data));
+render(new Login(data));

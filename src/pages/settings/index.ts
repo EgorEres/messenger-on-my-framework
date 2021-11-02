@@ -70,4 +70,4 @@ export default class Settings extends Block {
   }
 }
 
-render("body", new Settings(data));
+render(new Settings(data));

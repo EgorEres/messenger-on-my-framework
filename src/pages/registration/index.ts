@@ -71,4 +71,4 @@ export default class Registration extends Block {
   }
 }
 
-render("body", new Registration(data));
+render(new Registration(data));

@@ -56,9 +56,11 @@ input.success-validation {
   background: #b2dbb2;
 }
 
-button {
+button,
+input[type="submit"] {
   height: 35px;
   width: 100%;
+  text-align: center;
   box-sizing: border-box;
   padding: 0 10px;
   margin-bottom: 5px;
@@ -68,6 +70,10 @@ button {
   color: var(--main-color);
   outline: none;
   cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background: var(--bg-elem-color);
 }
 
 button:hover {

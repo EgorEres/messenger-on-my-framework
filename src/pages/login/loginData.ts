@@ -1,6 +1,5 @@
 import Input from "../../components/Input/input";
 import Button from "../../components/Button/button";
-import goToPage from "../../utils/goToPage";
 import { LoginPageProps } from "./interfaces";
 
 const data: LoginPageProps = {
@@ -22,22 +21,12 @@ const data: LoginPageProps = {
       }).render(),
     },
   ],
-  buttons: [
-    {
-      button: new Button({
-        id: "login-sign-in",
-        buttonText: "Войти",
-      }).render(),
-    },
-    {
-      button: new Button({
-        className: "_global-style__secondary-button",
-        id: "login-sign-up",
-        buttonText: "Зарегистрироваться",
-        onClickAction: () => goToPage("registration"),
-      }).render(),
-    },
-  ],
+  button: new Button({
+    className: "_global-style__secondary-button",
+    id: "login-sign-up",
+    buttonText: "Зарегистрироваться",
+  }).render(),
+  loginButtonText: "Войти",
 };
 
 export default data;

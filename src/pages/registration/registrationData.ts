@@ -1,6 +1,6 @@
 import Input from "../../components/Input/input";
 import Button from "../../components/Button/button";
-import goToPage from "../../utils/goToPage";
+// import goToPage from "../../utils/goToPage";
 
 const data = {
   inputs: [
@@ -66,7 +66,7 @@ const data = {
       button: new Button({
         id: "login-sign-in",
         buttonText: "Войти",
-        onClickAction: () => goToPage("login"),
+        // onClickAction: () => goToPage("login"),
       }).render(),
     },
   ],

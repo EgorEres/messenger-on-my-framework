@@ -2,9 +2,14 @@ import EventBus from "./eventBus";
 
 declare const Handlebars;
 
+export interface CbEventsInterface {
+  name: string;
+  callback: EventListener;
+}
+
 export default class Block {
   static EVENTS = {
-    INIT: "init",
+    FLOW_CWM: "flow:component-will-mount",
     FLOW_CDM: "flow:component-did-mount",
     FLOW_RENDER: "flow:render",
     FLOW_CDU: "flow:component-did-update",
@@ -25,26 +30,21 @@ export default class Block {
 
   constructor(template: string, props = {}) {
     const eventBus = new EventBus();
-
-    this._meta = { template, props };
-    this._element = this._createDocumentElement("div");
-    this.props = this._makePropsProxy(props);
-
     this.eventBus = () => eventBus;
 
+    this._meta = { template, props };
+    this._element = document.createElement("div");
+    this.props = this._makePropsProxy(props);
+
     this._registerEvents(eventBus);
-    eventBus.emit(Block.EVENTS.INIT);
+    eventBus.emit(Block.EVENTS.FLOW_CWM);
   }
 
   _registerEvents(eventBus) {
-    eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
+    eventBus.on(Block.EVENTS.FLOW_CWM, this._componentWillMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
-  }
-
-  init() {
-    this.eventBus().emit(Block.EVENTS.FLOW_CDM);
   }
 
   setProps = (nextProps: { [key: string]: any }) => {
@@ -55,21 +55,28 @@ export default class Block {
     Object.assign(this.props, nextProps);
   };
 
-  _createDocumentElement(tagName: string): HTMLElement {
-    return document.createElement(tagName);
-  }
-
   compile(props: object): string {
     const page = Handlebars.compile(this._meta.template)(props);
     return page;
   }
 
   _render() {
-    this._element.innerHTML = this.render();
+    const html = this.render();
+    const dom = this._htmlToDocumentFragment(html);
+    this._element.append(dom);
+
+    this.eventBus().emit(Block.EVENTS.FLOW_CDM);
   }
 
   render() {
     return this.compile(this.props);
+  }
+
+  _htmlToDocumentFragment(html) {
+    const template = document.createElement("template");
+    const trimHtml = html.trim();
+    template.innerHTML = trimHtml;
+    return template.content;
   }
 
   getContent(): HTMLElement {
@@ -90,22 +97,28 @@ export default class Block {
     });
   }
 
+  _componentWillMount() {
+    this.componentWillMount();
+    this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+  }
+
+  componentWillMount() {}
+
   _componentDidMount() {
     this.componentDidMount();
-    this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
 
   componentDidMount() {}
 
   _componentDidUpdate(oldProps, newProps) {
-    const response = this.componentDidUpdate(oldProps, newProps);
+    const response = this.shouldComponentUpdate(oldProps, newProps);
 
     if (response) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
   }
 
-  componentDidUpdate(oldProps, newProps) {
+  shouldComponentUpdate(oldProps, newProps) {
     return oldProps !== newProps;
   }
 }

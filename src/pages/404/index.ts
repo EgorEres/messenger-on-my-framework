@@ -6,14 +6,15 @@ import render from "../../utils/renderDOM";
 import goToPage from "../../utils/goToPage";
 import { Page404Props } from "./interfaces";
 
+const buttonId: string = "button-page-500";
+
 const data: Page404Props = {
   title: "404",
   description: "Такой страницы не существует.",
 
   button: new Button({
     buttonText: "Вернутся к чатам",
-    onClickAction: () => goToPage("chats"),
-    id: "page-404",
+    id: buttonId,
   }).render(),
 };
 
@@ -22,9 +23,11 @@ export default class Page404 extends Block {
     super(notFoundTemplate, props);
   }
 
-  render() {
-    return this.compile(this.props);
+  componentDidMount() {
+    this._element
+      .querySelector(`#${buttonId}`)
+      ?.addEventListener("click", () => goToPage("chats"));
   }
 }
 
-render("body", new Page404(data));
+render(new Page404(data));

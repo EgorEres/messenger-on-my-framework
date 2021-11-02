@@ -10,14 +10,4 @@ const data: PageChatsProps = {
   emptyText: "Что-бы начать общаться выберите контакт или группу",
 };
 
-export default class Chats extends Block {
-  constructor(props: PageChatsProps) {
-    super(chatsTemplate, props);
-  }
-
-  render() {
-    return this.compile(this.props);
-  }
-}
-
-render("body", new Chats(data));
+render(new Block(chatsTemplate, data));

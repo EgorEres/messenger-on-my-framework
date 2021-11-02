@@ -1,17 +1,18 @@
 const loginTemplate: string = `<div class='_login__login-wrapper'>
   <div class='_login__login-block'>
     <h2>Вход</h2>
-    <div class='_login__inputs-block'>
+    <form id='login-form' name='login-form' class='_login__inputs-block'>
       {{#each inputs}}
         {{{input}}}
       {{/each}}
-    </div>
+    </form>
+    <span id="_login__error"></span>
+
     <div class='_login__buttons-block'>
-      {{#each buttons}}
-        {{{button}}}
-      {{/each}}
+      <input type="submit" value="{{loginButtonText}}" form="login-form">
+      {{{button}}}
     </div>
-    </div>
+  </div>
 </div>`;
 
 export default loginTemplate;

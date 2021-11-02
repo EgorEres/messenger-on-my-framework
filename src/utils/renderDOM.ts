@@ -1,10 +1,9 @@
-export default function render(query: string, block) {
-  const root = document.querySelector(query) as Node;
+export default function render(component) {
+  const root = document.getElementById("app-root") as HTMLElement;
 
   if (!root) {
-    throw new Error("query selector not found");
+    throw new Error("not found app-root element");
   }
-
-  root.appendChild(block.getContent());
+  root.append(component.getContent());
   return root;
 }
