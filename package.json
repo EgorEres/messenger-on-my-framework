@@ -5,7 +5,7 @@
   "browserslist": "> 0.5%, last 2 versions",
   "scripts": {
     "start": "node server.js",
-    "start:dev": "parcel static/settings.html -p 3000 --no-cache --no-source-maps",
+    "start:dev": "parcel static/chats.html -p 3000 --no-cache --no-source-maps",
     "build": "parcel build static/*.html --no-cache --no-source-maps",
     "lint": "eslint . --ext .ts"
   },
@@ -41,7 +41,8 @@
   "dependencies": {
     "autoprefixer": "^9.8.6",
     "express": "^4.17.1",
-    "handlebars": "^4.7.7"
+    "handlebars": "^4.7.7",
+    "uniqid": "^5.4.0"
   },
   "main": "index.js",
   "keywords": []

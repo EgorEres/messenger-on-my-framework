@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
 
 :root {
-  --main-color: #1e6367;
+  --main-color: #2a4344;
   --main-bg-color: #caedef;
   --border-color: #4f9b9f;
   --bg-elem-color: #caedef;
@@ -25,6 +25,10 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+div {
+  width: 100%;
 }
 
 .position-on-center {

@@ -1,16 +1,23 @@
 .wrapper {
-  height: 100vh;
   display: flex;
+  height: 100vh;
 }
 
 .list {
   width: 300px;
   background: #469ba0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
-.search-wrapper {
+.list header {
   display: flex;
   padding: 20px 10px;
+}
+
+.list container {
+  height: 100%;
 }
 
 .profile-menu {
@@ -39,13 +46,18 @@
   background: #53b0b5;
 }
 
+.contact-active {
+  padding: 10px 5px;
+  margin-bottom: 5px;
+  background: #1e6367;
+  color: #fff;
+}
+
 .messages {
   width: 100%;
   background: var(--bg-elem-color);
-}
-
-.messages-list {
-  height: calc(100vh - 40px);
+  font-size: 20px;
+  max-width: 350px;
 }
 
 .messages-place {
@@ -60,4 +72,26 @@
   border: none;
   height: 40px;
   padding: 0 14px;
+}
+
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+.messages-list {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.message-direction-to {
+  text-align: left;
+}
+
+.message-direction-from {
+  text-align: right;
 }

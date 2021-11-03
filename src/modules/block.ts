@@ -55,9 +55,6 @@ export default class Block {
   }
 
   _render() {
-    // const html = this.render();
-    // const dom = this._htmlToDocumentFragment(html);
-    // this._element.append(dom);
     this._element.innerHTML = this.render();
 
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
@@ -65,13 +62,6 @@ export default class Block {
 
   render() {
     return this.compile(this.props);
-  }
-
-  _htmlToDocumentFragment(html) {
-    const template = document.createElement("template");
-    const trimHtml = html.trim();
-    template.innerHTML = trimHtml;
-    return template.content;
   }
 
   getContent(): HTMLElement {

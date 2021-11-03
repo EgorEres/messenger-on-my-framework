@@ -1,18 +1,21 @@
-const chatsTemplate: string = `<div>
-  <div class='_chats__wrapper'>
-    <div class='_chats__list'>
-      <div class='_chats__search-wrapper'>
-        {{!-- [TODO] change this to burger image --}}
-        <div class='_chats__profile-menu'><a href="{{urlToSettings}}">S</a></div>
-        <input class='_chats__search' placeholder="Поиск" />
-      </div>
+const chatsTemplate: string = `<div class='_chats__wrapper'>
+  <div class='_chats__list'>
+    <header>
+      <div class='_chats__profile-menu'><a href="{{urlToSettings}}">S</a></div>
+      <input class='_chats__search' placeholder="Поиск" />
+    </header>
 
+    <container>
       {{#each chats}}
-        <div class='_chats__contact'>
-          <span>{{this.name}}</span>
+        <div
+          class='_chats__contact{{#if isActive}}-active{{/if}}'
+          id='{{id}}'
+        >
+          {{name}}
         </div>
       {{/each}}
-
+    </container>
+    <footer>
       <a href="./500.html">
         <div class='_chats__contact'>
           <span>go to 500</span>
@@ -24,17 +27,11 @@ const chatsTemplate: string = `<div>
           <span>go to 404</span>
         </div>
       </a>
-    </div>
-    <div class='_chats__messages'>
-      <div class='_global-style__position-on-center _chats__messages-list'>
-        <span class='_chats__messages-place'>
-          {{emptyText}}
-        </span>
-      </div>
-
-      <input type="text" class='_chats__message-input' />
-    </div>
+    </footer>
   </div>
+  <div id='chat-section' class='_chats__section'></div>
 </div>`;
+
+export const emptyChatTemplate: string = `<p class='_chats__messages'>Что-бы начать общаться выберите контакт или группу</p>`;
 
 export default chatsTemplate;
