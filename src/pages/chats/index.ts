@@ -1,7 +1,7 @@
-import "styles/chats.css";
+import "./chats.css";
 import chatsTemplate from "./chatsTemplate";
-import Block from "../../modules/block.js";
-import render from "../../utils/renderDOM.js";
+import Block from "../../modules/block";
+import render from "../../utils/renderDOM";
 import { PageChatsProps } from "./interfaces";
 
 const data: PageChatsProps = {

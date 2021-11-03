@@ -6,7 +6,6 @@ const loginTemplate: string = `<div class='_login__login-wrapper'>
         {{{input}}}
       {{/each}}
     </form>
-    <span id="_login__error"></span>
 
     <div class='_login__buttons-block'>
       <input type="submit" value="{{loginButtonText}}" form="login-form">

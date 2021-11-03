@@ -1,4 +1,4 @@
-import "styles/notFoundPage.css";
+import "./notFoundPage.css";
 import notFoundTemplate from "./notFoundTemplate";
 import Button from "../../components/Button/button";
 import Block from "../../modules/block";

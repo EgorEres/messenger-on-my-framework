@@ -1,4 +1,4 @@
-import "styles/serverErrorPage.css";
+import "./serverErrorPage.css";
 import serverErrorTemplate from "./serverErrorTemplate";
 import Button from "../../components/Button/button";
 import Block from "../../modules/block";

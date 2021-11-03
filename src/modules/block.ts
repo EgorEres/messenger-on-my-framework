@@ -1,6 +1,5 @@
+import * as Handlebars from "handlebars";
 import EventBus from "./eventBus";
-
-declare const Handlebars;
 
 export default class Block {
   static EVENTS = {
@@ -56,9 +55,10 @@ export default class Block {
   }
 
   _render() {
-    const html = this.render();
-    const dom = this._htmlToDocumentFragment(html);
-    this._element.append(dom);
+    // const html = this.render();
+    // const dom = this._htmlToDocumentFragment(html);
+    // this._element.append(dom);
+    this._element.innerHTML = this.render();
 
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
   }

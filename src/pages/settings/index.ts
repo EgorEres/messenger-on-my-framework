@@ -1,77 +1,57 @@
-import "styles/settings.css";
+import "./settings.css";
 import settingsTemplate from "./settingsTemplate";
 import Block from "../../modules/block";
 import render from "../../utils/renderDOM";
 import data from "./settingsData";
 import goToPage from "../../utils/goToPage";
-import validation from "../../utils/validation";
+import Input from "../../components/Input/input";
 
-const testByName = {
-  first_name: validation.checkText,
-  second_name: validation.checkText,
-  login: validation.checkLogin,
-  email: validation.checkEmail,
-  phone: validation.checkPhone,
-  password: validation.checkPass,
-  repeat_password: validation.checkPass,
-};
 export default class Settings extends Block {
   constructor(props) {
     super(settingsTemplate, props);
   }
 
-  render() {
-    return this.compile(this.props);
-  }
-
-  private checkValid(name: string, value: string) {
-    return testByName[name].test(value);
-  }
-
   componentDidMount() {
-    const inputsCollection =
-      this._element.querySelectorAll<HTMLInputElement>("input");
-    const errorElem = this._element.querySelector(
-      "#_settings__error"
-    ) as HTMLElement;
-
     this._element
       ?.querySelector("#logout-button")
-      ?.addEventListener("click", () => goToPage("login"));
+      ?.addEventListener("click", (e) => {
+        e.preventDefault();
+        goToPage("login");
+      });
 
-    inputsCollection.forEach((input) => {
-      input.addEventListener("focus", () => {
-        input.classList.remove(
-          "_global-style__error-validation",
-          "_global-style__success-validation"
-        );
-      });
-      input.addEventListener("blur", () => {
-        const { name, value } = input;
-        const addClass = this.checkValid(name, value)
-          ? "_global-style__success-validation"
-          : "_global-style__error-validation";
-        input.classList.add(addClass);
-      });
+    const form = this._element?.querySelector(
+      "#settings-form"
+    ) as HTMLFormElement;
+
+    // Добавляем инпуты тут, что-бы не прогонять их через handlebars.compile
+    this.props.children.forEach((childData) => {
+      const input = new Input(childData).getContent();
+      form.appendChild(input);
     });
 
-    const regButton = this._element.querySelector("#save-settings-button");
-    regButton?.addEventListener("click", () => {
-      const errorInputsList: string[] = [];
-      inputsCollection.forEach((input) => {
-        const isValid = this.checkValid(input.name, input.value);
-        const addClass = isValid
-          ? "_global-style__success-validation"
-          : "_global-style__error-validation";
-        input.classList.add(addClass);
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      let error = false;
 
-        if (!isValid) errorInputsList.push(input.name);
+      const newChildren = this.props.children.map((childData) => {
+        const elem = this._element?.querySelector(
+          `#${childData.id}`
+        ) as HTMLInputElement;
+        if (!childData.validation.test(elem.value)) {
+          error = true;
+          return {
+            ...childData,
+            error: elem.value
+              ? childData.validationText
+              : "Поле не должно быть пустым",
+            inputErrorClassName: "_global-style__error-validation",
+          };
+        }
+        return childData;
       });
 
-      if (errorInputsList.length) {
-        errorElem.innerHTML = `Валидация не пройдена у полей ${errorInputsList.join(
-          " "
-        )}`;
+      if (error) {
+        this.setProps({ children: newChildren });
       } else {
         goToPage("chats");
       }

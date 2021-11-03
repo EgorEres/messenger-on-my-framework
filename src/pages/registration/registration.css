@@ -20,11 +20,6 @@
   padding-bottom: 20px;
 }
 
-.inputs-block span {
-  width: 100%;
-  font-size: 14px;
-}
-
 .buttons-block {
   display: flex;
   flex-wrap: wrap;

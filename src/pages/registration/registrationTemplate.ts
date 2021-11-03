@@ -1,16 +1,15 @@
 const registrationTemplate = `<div class='_registration__registration-wrapper'>
   <div class='_registration__registration-block'>
     <h2>Регистрация</h2>
-    <div class='_registration__inputs-block'>
+    <form class='_registration__inputs-block' id='registration-form'>
       {{#each inputs}}
         {{{input}}}
       {{/each}}
-    </div>
-    <span id="_registration__error"></span>
+    </form>
+
     <div class='_registration__buttons-block'>
-      {{#each buttons}}
-        {{{button}}}
-      {{/each}}
+      <input type="submit" value="{{submitButtonText}}" form="registration-form">
+      {{{button}}}
     </div>
   </div>
 </div>`;

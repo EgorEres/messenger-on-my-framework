@@ -1,11 +1,11 @@
-import "styles/login.css";
+import "./login.css";
 import loginTemplate from "./loginTemplate";
 import Block from "../../modules/block";
 import render from "../../utils/renderDOM";
 import data from "./loginData";
 import goToPage from "../../utils/goToPage";
-import validation from "../../utils/validation";
 import { LoginPageProps } from "./interfaces";
+import Input from "../../components/Input/input";
 
 export default class Login extends Block {
   constructor(props: LoginPageProps) {
@@ -18,55 +18,40 @@ export default class Login extends Block {
       ?.addEventListener("click", () => goToPage("registration"));
 
     const form = this._element?.querySelector("#login-form") as HTMLFormElement;
-    const errorElem = this._element?.querySelector(
-      "#_login__error"
-    ) as HTMLElement;
 
-    const loginInput = this._element?.querySelector(
-      "#input-login"
-    ) as HTMLInputElement;
-    const passwordInput = this._element?.querySelector(
-      "#input-password"
-    ) as HTMLInputElement;
+    // Добавляем инпуты тут, что-бы не прогонять их через handlebars.compile
+    this.props.children.forEach((childData) => {
+      const input = new Input(childData).getContent();
+      form.appendChild(input);
+    });
 
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      if (
-        !validation.checkLogin.test(loginInput?.value) ||
-        !validation.checkPass.test(passwordInput.value)
-      ) {
-        loginInput.classList.add("_global-style__error-validation");
-        passwordInput.classList.add("_global-style__error-validation");
-        errorElem.innerHTML = "Неверный логин или пароль (пароль пока 1234)";
+      let error = false;
+
+      const newChildren = this.props.children.map((childData) => {
+        const elem = this._element?.querySelector(
+          `#${childData.id}`
+        ) as HTMLInputElement;
+        if (!childData.validation.test(elem.value)) {
+          error = true;
+          return {
+            ...childData,
+            error: elem.value
+              ? childData.validationText
+              : "Поле не должно быть пустым",
+            inputErrorClassName: "_global-style__error-validation",
+          };
+        }
+        return childData;
+      });
+
+      if (error) {
+        this.setProps({ children: newChildren });
       } else {
         goToPage("chats");
       }
     });
-
-    form.addEventListener(
-      "focus",
-      () => {
-        errorElem.innerHTML = "";
-        loginInput.classList.remove("_global-style__error-validation");
-        passwordInput.classList.remove("_global-style__error-validation");
-      },
-      true
-    );
-
-    form.addEventListener(
-      "blur",
-      () => {
-        if (
-          !validation.checkLogin.test(loginInput?.value) ||
-          !validation.checkPass.test(passwordInput.value)
-        ) {
-          loginInput.classList.add("_global-style__error-validation");
-          passwordInput.classList.add("_global-style__error-validation");
-          errorElem.innerHTML = "Неверный логин или пароль (пароль пока 1234)";
-        }
-      },
-      true
-    );
   }
 }
 

@@ -20,27 +20,9 @@
   width: 100%;
 }
 
-.inputs-block span {
-  width: 100%;
-  font-size: 14px;
-}
-
-.inputs-block input {
-  width: 100%;
-  padding: 5px;
-  margin-bottom: 5px;
-  box-sizing: border-box;
-}
-
 .buttons-block {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
-}
-
-#error {
-  display: block;
-  width: 100%;
-  height: 60px;
 }

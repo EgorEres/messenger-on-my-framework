@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+
 :root {
   --main-color: #1e6367;
   --main-bg-color: #caedef;
@@ -51,9 +53,12 @@ input.error-validation {
   background: #f5d2d2;
 }
 
-input.success-validation {
-  border-color: green;
-  background: #b2dbb2;
+.error-validation-input-error {
+  font-size: 12px;
+  padding-bottom: 5px;
+  display: block;
+  margin-top: -5px;
+  color: red;
 }
 
 button,

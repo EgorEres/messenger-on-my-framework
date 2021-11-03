@@ -1,72 +1,70 @@
-import Input from "../../components/Input/input";
 import Button from "../../components/Button/button";
-// import goToPage from "../../utils/goToPage";
+import validation from "../../utils/validation";
 
 const data = {
-  inputs: [
+  button: new Button({
+    id: "login-sign-in",
+    buttonText: "Войти",
+    className: "_global-style__secondary-button",
+  }).render(),
+  submitButtonText: "Зарегистрироваться",
+  children: [
     {
-      input: new Input({
-        name: "Имя",
-        type: "text",
-        inputName: "first_name",
-      }).render(),
+      name: "Имя",
+      type: "text",
+      inputName: "first_name",
+      id: "input-first_name",
+      validation: validation.checkText,
+      validationText: "Неподходящее имя",
     },
     {
-      input: new Input({
-        name: "Фамилия",
-        type: "text",
-        inputName: "second_name",
-      }).render(),
+      name: "Фамилия",
+      type: "text",
+      inputName: "second_name",
+      id: "input-second_name",
+      validation: validation.checkText,
+      validationText: "Неподходящая фамилия",
     },
     {
-      input: new Input({
-        name: "Логин",
-        type: "text",
-        inputName: "login",
-      }).render(),
+      name: "Логин",
+      type: "text",
+      inputName: "login",
+      id: "input-login",
+      validation: validation.checkLogin,
+      validationText: "Неподходящий логин",
+    },
+
+    {
+      name: "Почта",
+      type: "text",
+      inputName: "email",
+      id: "input-email",
+      validation: validation.checkEmail,
+      validationText: "Невалидный email, пример: mail@gmail.com",
     },
     {
-      input: new Input({
-        name: "Почта",
-        type: "text",
-        inputName: "email",
-      }).render(),
+      name: "Телефон",
+      type: "text",
+      inputName: "phone",
+      id: "input-phone",
+      validation: validation.checkPhone,
+      validationText: "Проверьте правильность номера телефона",
     },
     {
-      input: new Input({
-        name: "Телефон",
-        type: "text",
-        inputName: "phone",
-      }).render(),
+      name: "Пароль",
+      type: "password",
+      inputName: "password",
+      id: "input-password",
+      validation: validation.checkPass,
+      validationText: "Неверный пароль (пока верный только A12345678)",
     },
     {
-      input: new Input({
-        name: "Повторите пароль (пока можно только 1234)",
-        type: "password",
-        inputName: "password",
-      }).render(),
-    },
-    {
-      input: new Input({
-        name: "Пароль (пока можно только 1234)",
-        type: "password",
-        inputName: "repeat_password",
-      }).render(),
-    },
-  ],
-  buttons: [
-    {
-      button: new Button({
-        className: "_global-style__secondary-button",
-        id: "login-sign-up",
-        buttonText: "Зарегистрироваться",
-      }).render(),
-    },
-    {
-      button: new Button({
-        id: "login-sign-in",
-        buttonText: "Войти",
-      }).render(),
+      name: "Повторите пароль",
+      type: "password",
+      inputName: "re-password",
+      id: "input-re-password",
+      validation: validation.checkPass,
+      validationText: "Неверный пароль (пока верный только A12345678) имя",
     },
   ],
 };
