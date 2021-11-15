@@ -1,14 +1,13 @@
 import "./settings.css";
 import settingsTemplate from "./settingsTemplate";
 import Block from "../../modules/block";
-import render from "../../utils/renderDOM";
 import data from "./settingsData";
-import goToPage from "../../utils/goToPage";
 import Input from "../../components/Input/input";
+import router from "../../router";
 
-export default class Settings extends Block {
-  constructor(props) {
-    super(settingsTemplate, props);
+class Settings extends Block {
+  constructor() {
+    super(settingsTemplate, data);
   }
 
   componentDidMount() {
@@ -16,7 +15,7 @@ export default class Settings extends Block {
       ?.querySelector("#logout-button")
       ?.addEventListener("click", (e) => {
         e.preventDefault();
-        goToPage("login");
+        router.go("/");
       });
 
     const form = this._element?.querySelector(
@@ -53,10 +52,10 @@ export default class Settings extends Block {
       if (error) {
         this.setProps({ children: newChildren });
       } else {
-        goToPage("chats");
+        router.go("/messenger");
       }
     });
   }
 }
 
-render(new Settings(data));
+export default Settings;

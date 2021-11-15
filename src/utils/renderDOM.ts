@@ -4,6 +4,7 @@ export default function render(component) {
   if (!root) {
     throw new Error("not found app-root element");
   }
+  root.innerHTML = "";
   root.append(component.getContent());
   return root;
 }

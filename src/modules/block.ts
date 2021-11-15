@@ -7,6 +7,7 @@ export default class Block {
     FLOW_CDM: "flow:component-did-mount",
     FLOW_RENDER: "flow:render",
     FLOW_CDU: "flow:component-did-update",
+    FLOW_CWU: "flow:component-will-unmount",
   };
 
   _element: HTMLElement;
@@ -39,6 +40,7 @@ export default class Block {
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
+    eventBus.on(Block.EVENTS.FLOW_CWU, this._componentWillUnmount.bind(this));
   }
 
   setProps = (nextProps: { [key: string]: any }) => {
@@ -105,5 +107,17 @@ export default class Block {
 
   shouldComponentUpdate(oldProps, newProps) {
     return oldProps !== newProps;
+  }
+
+  _componentWillUnmount() {
+    console.log("will unmount");
+    // this._element.innerHTML = "";
+    this.componentWillUnmount();
+  }
+
+  componentWillUnmount() {}
+
+  hide() {
+    this.eventBus().emit(Block.EVENTS.FLOW_CWU);
   }
 }

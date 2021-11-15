@@ -1,11 +1,11 @@
 import "./chats.css";
 import chatsTemplate, { emptyChatTemplate } from "./chatsTemplate";
 import Block from "../../modules/block";
-import render from "../../utils/renderDOM";
 import data from "./chatsData";
 import Messenger from "./chatComponents/massanger/index";
+import router from "../../router";
 
-class ChatsPage extends Block {
+class Chats extends Block {
   constructor() {
     super(chatsTemplate, data);
   }
@@ -54,7 +54,16 @@ class ChatsPage extends Block {
           ),
         });
       });
+
+    // temporary listeners for routing
+    this._element
+      .querySelector("#go-to-500")
+      ?.addEventListener("click", () => router.go("/500"));
+
+    this._element
+      .querySelector("#go-to-settings")
+      ?.addEventListener("click", () => router.go("/settings"));
   }
 }
 
-render(new ChatsPage());
+export default Chats;

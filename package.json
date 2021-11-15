@@ -5,8 +5,8 @@
   "browserslist": "> 0.5%, last 2 versions",
   "scripts": {
     "start": "node server.js",
-    "start:dev": "parcel static/chats.html -p 3000 --no-cache --no-source-maps",
-    "build": "parcel build static/*.html --no-cache --no-source-maps",
+    "start:dev": "parcel static/index.html -p 3000 --no-cache --no-source-maps",
+    "build": "parcel build static/index.html --no-cache --no-source-maps",
     "lint": "eslint . --ext .ts"
   },
   "repository": {

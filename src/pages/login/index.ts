@@ -1,21 +1,20 @@
 import "./login.css";
 import loginTemplate from "./loginTemplate";
 import Block from "../../modules/block";
-import render from "../../utils/renderDOM";
 import data from "./loginData";
-import goToPage from "../../utils/goToPage";
 import { LoginPageProps } from "./interfaces";
 import Input from "../../components/Input/input";
+import router from "../../router";
 
-export default class Login extends Block {
-  constructor(props: LoginPageProps) {
-    super(loginTemplate, props);
+class Login extends Block {
+  constructor() {
+    super(loginTemplate, data as LoginPageProps);
   }
 
   componentDidMount() {
     this._element
       ?.querySelector("#login-sign-up")
-      ?.addEventListener("click", () => goToPage("registration"));
+      ?.addEventListener("click", () => router.go("/sign-up"));
 
     const form = this._element?.querySelector("#login-form") as HTMLFormElement;
 
@@ -49,10 +48,10 @@ export default class Login extends Block {
       if (error) {
         this.setProps({ children: newChildren });
       } else {
-        goToPage("chats");
+        router.go("/messenger");
       }
     });
   }
 }
 
-render(new Login(data));
+export default Login;

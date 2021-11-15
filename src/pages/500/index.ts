@@ -2,9 +2,8 @@ import "./serverErrorPage.css";
 import serverErrorTemplate from "./serverErrorTemplate";
 import Button from "../../components/Button/button";
 import Block from "../../modules/block";
-import render from "../../utils/renderDOM";
-import goToPage from "../../utils/goToPage";
 import { Page500Props } from "./interfaces";
+import router from "../../router";
 
 const buttonId: string = "button-page-500";
 
@@ -19,15 +18,13 @@ const data: Page500Props = {
 };
 
 export default class Page500 extends Block {
-  constructor(props: Page500Props) {
-    super(serverErrorTemplate, props);
+  constructor() {
+    super(serverErrorTemplate, data);
   }
 
   componentDidMount() {
     this._element
       .querySelector(`#${buttonId}`)
-      ?.addEventListener("click", () => goToPage("chats"));
+      ?.addEventListener("click", () => router.go("/messenger"));
   }
 }
-
-render(new Page500(data));

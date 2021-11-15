@@ -1,20 +1,19 @@
 import "./registration.css";
 import registrationTemplate from "./registrationTemplate";
 import Block from "../../modules/block";
-import render from "../../utils/renderDOM";
 import data from "./registrationData";
-import goToPage from "../../utils/goToPage";
 import Input from "../../components/Input/input";
+import router from "../../router";
 
-export default class Registration extends Block {
-  constructor(props) {
-    super(registrationTemplate, props);
+class Registration extends Block {
+  constructor() {
+    super(registrationTemplate, data);
   }
 
   componentDidMount() {
     this._element
       ?.querySelector("#login-sign-in")
-      ?.addEventListener("click", () => goToPage("login"));
+      ?.addEventListener("click", () => router.go("/"));
 
     const form = this._element?.querySelector(
       "#registration-form"
@@ -50,10 +49,10 @@ export default class Registration extends Block {
       if (error) {
         this.setProps({ children: newChildren });
       } else {
-        goToPage("chats");
+        router.go("/messenger");
       }
     });
   }
 }
 
-render(new Registration(data));
+export default Registration;

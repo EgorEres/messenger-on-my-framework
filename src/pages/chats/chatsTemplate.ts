@@ -1,7 +1,7 @@
 const chatsTemplate: string = `<div class='_chats__wrapper'>
   <div class='_chats__list'>
     <header>
-      <div class='_chats__profile-menu'><a href="{{urlToSettings}}">S</a></div>
+      <div class='_chats__profile-menu' id='go-to-settings'>S</div>
       <input class='_chats__search' placeholder="Поиск" />
     </header>
 
@@ -16,17 +16,9 @@ const chatsTemplate: string = `<div class='_chats__wrapper'>
       {{/each}}
     </container>
     <footer>
-      <a href="./500.html">
-        <div class='_chats__contact'>
-          <span>go to 500</span>
-        </div>
-      </a>
-
-      <a href='./404.html'>
-        <div class='_chats__contact'>
-          <span>go to 404</span>
-        </div>
-      </a>
+      <div class='_chats__contact' id="go-to-500">
+        <span>go to 500</span>
+      </div>
     </footer>
   </div>
   <div id='chat-section' class='_chats__section'></div>
