@@ -71,6 +71,7 @@ class HTTPTransport {
       xhr.open(method, url, true);
       xhr.timeout = timeout;
       setXHRHeaders(xhr, headers);
+      xhr.withCredentials = true;
 
       xhr.onload = () => {
         resolve(xhr);

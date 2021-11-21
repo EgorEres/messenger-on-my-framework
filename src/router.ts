@@ -5,9 +5,8 @@ import Registration from "./pages/registration/index";
 import Login from "./pages/login/index";
 import Settings from "./pages/settings/index";
 import Chats from "./pages/chats/index";
-import store from "./store/index";
 
-const router = new Router(store);
+const router = new Router({});
 
 router.default(Page404);
 router.use("/", Login);

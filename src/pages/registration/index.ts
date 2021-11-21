@@ -5,6 +5,8 @@ import data from "./registrationData";
 import Input from "../../components/Input/input";
 import router from "../../router";
 import userApi from "../../api/user-api";
+import store from "../../store/index";
+import errorsLocal from "../../utils/errorsLocal";
 
 class Registration extends Block {
   constructor() {
@@ -34,13 +36,11 @@ class Registration extends Block {
         const elem = this._element?.querySelector(
           `#${childData.id}`
         ) as HTMLInputElement;
-        if (!childData.validation.test(elem.value)) {
+        if (!elem.value) {
           error = true;
           return {
             ...childData,
-            error: elem.value
-              ? childData.validationText
-              : "Поле не должно быть пустым",
+            error: "Поле не должно быть пустым",
             inputErrorClassName: "_global-style__error-validation",
           };
         }
@@ -51,8 +51,45 @@ class Registration extends Block {
         this.setProps({ children: newChildren });
       } else {
         const formData = new FormData(form);
-        userApi.postUserSignUp(formData).then((res) => console.log(res));
-        // router.go("/messenger");
+        const registrationData = {
+          first_name: formData.get("first_name"),
+          second_name: formData.get("second_name"),
+          login: formData.get("login"),
+          email: formData.get("email"),
+          password: formData.get("password"),
+          phone: formData.get("phone"),
+        };
+
+        userApi.postUserSignUp(registrationData).then((res) => {
+          if (res.id) {
+            store.dispatch({
+              type: "SET_USER_DATA",
+              payload: { ...registrationData, id: res.id },
+            });
+
+            router.go("/messenger");
+            return;
+          }
+          if (res.errorText) {
+            const { text, fieldType } = errorsLocal(res.errorText);
+            if (fieldType === "main") {
+              this.setProps({ mainError: text });
+              return;
+            }
+            const updateChildren = this.props.children.map((childData) => {
+              if (childData.inputName === fieldType) {
+                return {
+                  ...childData,
+                  error: text,
+                  inputErrorClassName: "_global-style__error-validation",
+                };
+              }
+              return childData;
+            });
+
+            this.setProps({ children: updateChildren });
+          }
+        });
       }
     });
   }

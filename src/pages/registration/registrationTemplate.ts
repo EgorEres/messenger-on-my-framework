@@ -7,8 +7,10 @@ const registrationTemplate = `<div class='_registration__registration-wrapper'>
       {{/each}}
     </form>
 
+    <p id="mainError">{{mainError}}</p>
+    
     <div class='_registration__buttons-block'>
-      <input type="submit" value="{{submitButtonText}}" form="registration-form">
+      <input type="submit" value="Зарегистрироваться" form="registration-form">
       {{{button}}}
     </div>
   </div>

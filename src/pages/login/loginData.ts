@@ -1,5 +1,4 @@
 import Button from "../../components/Button/button";
-import validation from "../../utils/validation";
 import { LoginPageProps } from "./interfaces";
 
 const data: LoginPageProps = {
@@ -15,16 +14,14 @@ const data: LoginPageProps = {
       type: "text",
       inputName: "login",
       id: "input-login",
-      validation: validation.checkLogin,
-      validationText: "Неверный логин",
+      notEmpty: true,
     },
     {
       name: "Пароль",
       type: "password",
       inputName: "password",
       id: "password-login",
-      validation: validation.checkPass,
-      validationText: "Неверный пароль (пока верный только A12345678)",
+      notEmpty: true,
     },
   ],
   mainError: "",

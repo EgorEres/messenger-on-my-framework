@@ -10,8 +10,19 @@ interface InputProps {
   value?: string;
   validation?: string;
   validationText?: string;
-  inputErrorClassName: string;
+  inputErrorClassName?: string;
+  notEmpty?: string;
 }
+
+const isValid = (value, notEmpty, validation, validationText) => {
+  const defaultText = "Заполнено не верно";
+  if (notEmpty && !value) return "Поле не должно быть пустым";
+
+  if (validation)
+    return validation.test(value) ? null : validationText || defaultText;
+
+  return null;
+};
 
 export default class Input extends Block {
   constructor(props: InputProps) {
@@ -23,9 +34,16 @@ export default class Input extends Block {
 
     input.addEventListener("blur", (e: { target }) => {
       const { value } = e.target;
-      if (!value) {
+      const validationText = isValid(
+        value,
+        this.props.notEmpty,
+        this.props.validation,
+        this.props.validationText
+      );
+      if (validationText) {
         this.setProps({
-          error: "Поле не должно быть пустым",
+          error: validationText,
+          value,
           inputErrorClassName: "_global-style__error-validation",
         });
       } else {

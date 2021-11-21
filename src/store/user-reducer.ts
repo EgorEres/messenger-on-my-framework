@@ -1,18 +1,20 @@
 const initialState = {
-  id: 123,
-  first_name: "Petya",
-  second_name: "Pupkin",
-  display_name: "Petya Pupkin",
-  login: "userLogin",
-  email: "my@email.com",
-  phone: "89223332211",
-  avatar: "/path/to/avatar.jpg",
+  id: null,
+  first_name: "Имя",
+  second_name: "Фамилия",
+  login: "logininyshka",
+  email: "email@mail.com",
+  phone: "900123123",
+  avatar: null,
+  withoutGetUserInfo: false,
 };
 
 function userReducer(state = initialState, action?) {
   switch (action?.type) {
     case "SET_USER_DATA":
-      return action?.payload;
+      return { ...state, ...action?.payload };
+    case "SET_WITHOUT_GET_USER_INFO":
+      return { ...state, withoutGetUserInfo: action.payload };
     case "RESET_USER_DATA":
       return initialState;
     default:

@@ -1,15 +1,20 @@
 import HTTPTransport from "./HTTPTransport";
 
+// получение пользователя (нужны кукисы)
 function getUser() {
-  HTTPTransport.get("/auth/user")
+  return HTTPTransport.get("/auth/user")
     .then((res) => {
-      console.log(res.status);
-    })
-    .catch((err) => console.log(err));
+      if (res.status !== 200) {
+        console.error("can not get user:", res.response);
+        return null;
+      }
 
-  return "sdf";
+      return JSON.parse(res.response);
+    })
+    .catch((err) => console.error(err));
 }
 
+// логин
 function postUserSignIn(data) {
   return HTTPTransport.post("/auth/signin", { data: JSON.stringify(data) })
     .then((res) => {
@@ -19,19 +24,51 @@ function postUserSignIn(data) {
       }
       return res.response;
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.error(err);
+      return { errorText: "Неуспешная авторизация, попробуйте позднее" };
+    });
 }
 
+// логаут
+function postUserLogout() {
+  return HTTPTransport.post("/auth/logout").catch((err) => console.error(err));
+}
+
+const mock = true;
+
+const mockPromise = new Promise((resolve) => {
+  resolve();
+}).then(() => {
+  return {
+    errorText: "email is not validч",
+  };
+});
+
+// регистрация
 function postUserSignUp(data) {
+  if (mock) {
+    return mockPromise;
+  }
   return HTTPTransport.post("/auth/signup", { data: JSON.stringify(data) })
-    .then((res) => ({ response: res.response, code: res.code }))
-    .catch((err) => console.log(err));
+    .then((res) => {
+      if (res.status !== 200) {
+        const errorText = JSON.parse(res.response)?.reason;
+        return { errorText };
+      }
+      return JSON.parse(res.response);
+    })
+    .catch((err) => {
+      console.error(err);
+      return { errorText: "Не удалось зарегистрироваться, попробуйте позднее" };
+    });
 }
 
 export default {
   getUser,
   postUserSignIn,
   postUserSignUp,
+  postUserLogout,
 };
 
 // email: "email@mail.ru"

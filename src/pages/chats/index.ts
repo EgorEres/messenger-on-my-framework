@@ -4,6 +4,7 @@ import Block from "../../modules/block";
 import data from "./chatsData";
 import Messenger from "./chatComponents/massanger/index";
 import router from "../../router";
+import store from "../../store/index";
 
 class Chats extends Block {
   constructor() {
@@ -11,6 +12,10 @@ class Chats extends Block {
   }
 
   componentWillMount() {
+    const checkStore = store.getState();
+
+    console.log("in chats page:", checkStore);
+
     if (this.props.activeChats.length) {
       const newChatsList = this.props.chats.map((chat) => {
         if (this.props.activeChats.includes(chat.id)) {

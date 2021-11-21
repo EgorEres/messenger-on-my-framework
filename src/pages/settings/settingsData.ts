@@ -1,5 +1,7 @@
-import Button from "../../components/Button/button";
 import validation from "../../utils/validation";
+import store from "../../store/index";
+
+const userData = store.getState("user");
 
 const data = {
   children: [
@@ -8,26 +10,22 @@ const data = {
       type: "text",
       inputName: "first_name",
       id: "input-first_name",
-      validation: validation.checkText,
-      validationText: "Неподходящее имя",
+      value: userData.first_name,
     },
     {
       name: "Фамилия",
       type: "text",
       inputName: "second_name",
       id: "input-second_name",
-      validation: validation.checkText,
-      validationText: "Неподходящая фамилия",
+      value: userData.second_name,
     },
     {
       name: "Логин",
       type: "text",
       inputName: "login",
       id: "input-login",
-      validation: validation.checkLogin,
-      validationText: "Неподходящий логин",
+      value: userData.login,
     },
-
     {
       name: "Почта",
       type: "text",
@@ -35,6 +33,7 @@ const data = {
       id: "input-email",
       validation: validation.checkEmail,
       validationText: "Невалидный email, пример: mail@gmail.com",
+      value: userData.email,
     },
     {
       name: "Телефон",
@@ -43,30 +42,21 @@ const data = {
       id: "input-phone",
       validation: validation.checkPhone,
       validationText: "Проверьте правильность номера телефона",
+      value: userData.phone,
     },
     {
       name: "Пароль",
       type: "password",
       inputName: "password",
       id: "input-password",
-      validation: validation.checkPass,
-      validationText: "Неверный пароль (пока верный только A12345678)",
     },
     {
       name: "Повторите пароль",
       type: "password",
       inputName: "re-password",
       id: "input-re-password",
-      validation: validation.checkPass,
-      validationText: "Неверный пароль (пока верный только A12345678) имя",
     },
   ],
-  button: new Button({
-    className: "_global-style__secondary-button",
-    id: "logout-button",
-    buttonText: "Выйти",
-  }).render(),
-  submitButtonText: "Сохранить",
 };
 
 export default data;

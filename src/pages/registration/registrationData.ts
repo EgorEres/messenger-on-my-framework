@@ -7,31 +7,28 @@ const data = {
     buttonText: "Войти",
     className: "_global-style__secondary-button",
   }).render(),
-  submitButtonText: "Зарегистрироваться",
+  mainError: "",
   children: [
     {
       name: "Имя",
       type: "text",
       inputName: "first_name",
       id: "input-first_name",
-      validation: validation.checkText,
-      validationText: "Неподходящее имя",
+      notEmpty: true,
     },
     {
       name: "Фамилия",
       type: "text",
       inputName: "second_name",
       id: "input-second_name",
-      validation: validation.checkText,
-      validationText: "Неподходящая фамилия",
+      notEmpty: true,
     },
     {
       name: "Логин",
       type: "text",
       inputName: "login",
       id: "input-login",
-      validation: validation.checkLogin,
-      validationText: "Неподходящий логин",
+      notEmpty: true,
     },
 
     {
@@ -41,6 +38,7 @@ const data = {
       id: "input-email",
       validation: validation.checkEmail,
       validationText: "Невалидный email, пример: mail@gmail.com",
+      notEmpty: true,
     },
     {
       name: "Телефон",
@@ -49,22 +47,20 @@ const data = {
       id: "input-phone",
       validation: validation.checkPhone,
       validationText: "Проверьте правильность номера телефона",
+      notEmpty: true,
     },
     {
       name: "Пароль",
       type: "password",
       inputName: "password",
       id: "input-password",
-      validation: validation.checkPass,
-      validationText: "Неверный пароль (пока верный только A12345678)",
+      notEmpty: true,
     },
     {
       name: "Повторите пароль",
       type: "password",
       inputName: "re-password",
       id: "input-re-password",
-      validation: validation.checkPass,
-      validationText: "Неверный пароль (пока верный только A12345678) имя",
     },
   ],
 };

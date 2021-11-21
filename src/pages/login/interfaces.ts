@@ -4,8 +4,9 @@ export interface LoginPageProps {
     type: string;
     inputName: string;
     id: string;
-    validation: RegExp;
-    validationText: string;
+    validation?: RegExp;
+    validationText?: string;
+    notEmpty?: boolean;
   }[];
   button: string;
   loginButtonText?: string;

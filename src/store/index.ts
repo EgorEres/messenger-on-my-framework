@@ -12,7 +12,13 @@ function createStore(reducer, state) {
     dispatch: (action) => {
       state = reducer(state, action);
     },
-    getState: () => state,
+    getState: (path?) => {
+      if (!path) return state;
+
+      return path
+        .split(".")
+        .reduce((acc, key) => (acc && key in acc ? acc[key] : null), state);
+    },
   };
 }
 

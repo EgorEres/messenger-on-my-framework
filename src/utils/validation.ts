@@ -1,13 +1,8 @@
-const checkEmail = /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{2,4})$/;
-const checkPhone = /^\d[\d\(\)\ -]{4,14}\d$/;
-const checkLogin = /^([A-Za-zА-Яа-я0-9_\-.]){2,10}$/;
-const checkText = /^([A-Za-zА-Яа-я]){2,10}$/;
-const checkPass = /A12345678/;
+const checkEmail = /^\S+@\S+$/;
+// const checkPhone = /^((8|\+7)[- ]?)?((?\d{3})?[- ]?)?[\d\- ]{7,10}$/;
+const checkPhone = /\+7 ([0-9]{3}) [0-9]{3}-[0-9]{2}-[0-9]{2}/;
 
 export default {
   checkEmail,
   checkPhone,
-  checkLogin,
-  checkText,
-  checkPass,
 };
