@@ -32,12 +32,10 @@ class Route {
 
   render() {
     if (!this._block) {
-      this._block = new this._blockClass();
+      console.log("in create block in router", this._props);
+      this._block = new this._blockClass(this._props);
       render(this._block);
-      // return;
     }
-
-    // this._block.show();
   }
 }
 

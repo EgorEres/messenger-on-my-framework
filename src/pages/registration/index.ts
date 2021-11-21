@@ -4,6 +4,7 @@ import Block from "../../modules/block";
 import data from "./registrationData";
 import Input from "../../components/Input/input";
 import router from "../../router";
+import userApi from "../../api/user-api";
 
 class Registration extends Block {
   constructor() {
@@ -49,7 +50,9 @@ class Registration extends Block {
       if (error) {
         this.setProps({ children: newChildren });
       } else {
-        router.go("/messenger");
+        const formData = new FormData(form);
+        userApi.postUserSignUp(formData).then((res) => console.log(res));
+        // router.go("/messenger");
       }
     });
   }

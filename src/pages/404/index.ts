@@ -18,7 +18,23 @@ const data: Page404Props = {
 };
 
 export default class Page404 extends Block {
-  constructor() {
+  constructor(store) {
+    console.log(store?.getState());
+    store.dispatch({
+      type: "SET_USER_DATA",
+      payload: {
+        id: 123,
+        first_name: "sssss",
+        second_name: "vvvv",
+        display_name: "skdjfkshdfkj",
+        login: "userLogin",
+        email: "my@email.com",
+        phone: "89223332211",
+        avatar: "/path/to/avatar.jpg",
+      },
+    });
+    console.log(store?.getState());
+
     super(notFoundTemplate, data);
   }
 

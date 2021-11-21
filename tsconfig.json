@@ -1,6 +1,7 @@
 {
     "compileOnSave": true,
     "compilerOptions": {
+        "experimentalDecorators": true,
         "rootDir": "src",
         "target": "es6",
         "declaration": false,

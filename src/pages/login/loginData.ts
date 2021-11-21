@@ -27,6 +27,7 @@ const data: LoginPageProps = {
       validationText: "Неверный пароль (пока верный только A12345678)",
     },
   ],
+  mainError: "",
 };
 
 export default data;

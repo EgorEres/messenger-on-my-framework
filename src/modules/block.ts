@@ -110,8 +110,6 @@ export default class Block {
   }
 
   _componentWillUnmount() {
-    console.log("will unmount");
-    // this._element.innerHTML = "";
     this.componentWillUnmount();
   }
 

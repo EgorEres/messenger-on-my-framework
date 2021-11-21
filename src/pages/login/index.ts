@@ -5,10 +5,17 @@ import data from "./loginData";
 import { LoginPageProps } from "./interfaces";
 import Input from "../../components/Input/input";
 import router from "../../router";
+import userApi from "../../api/user-api";
 
 class Login extends Block {
   constructor() {
     super(loginTemplate, data as LoginPageProps);
+  }
+
+  componentWillMount() {
+    // [TODO] отправить куки и получить пользователя, если все ок то редирект в чаты
+    const response = userApi.getUser();
+    console.log("check respose", response);
   }
 
   componentDidMount() {
@@ -32,13 +39,11 @@ class Login extends Block {
         const elem = this._element?.querySelector(
           `#${childData.id}`
         ) as HTMLInputElement;
-        if (!childData.validation.test(elem.value)) {
+        if (!elem.value) {
           error = true;
           return {
             ...childData,
-            error: elem.value
-              ? childData.validationText
-              : "Поле не должно быть пустым",
+            error: "Поле не должно быть пустым",
             inputErrorClassName: "_global-style__error-validation",
           };
         }
@@ -48,7 +53,18 @@ class Login extends Block {
       if (error) {
         this.setProps({ children: newChildren });
       } else {
-        router.go("/messenger");
+        const formData = new FormData(form);
+        const login = formData.get("login");
+        const password = formData.get("password");
+        userApi.postUserSignIn({ login, password }).then((res) => {
+          if (res === "OK") router.go("/messenger");
+          if (res.errorText) {
+            this._element?.querySelector("#mainError")?.innerHTML =
+              res.errorText === "Login or password is incorrect"
+                ? "Неверный логин или пароль"
+                : res.errorText;
+          }
+        });
       }
     });
   }

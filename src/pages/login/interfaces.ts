@@ -9,4 +9,5 @@ export interface LoginPageProps {
   }[];
   button: string;
   loginButtonText?: string;
+  mainError?: string;
 }

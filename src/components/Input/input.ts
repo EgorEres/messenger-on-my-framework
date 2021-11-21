@@ -23,12 +23,9 @@ export default class Input extends Block {
 
     input.addEventListener("blur", (e: { target }) => {
       const { value } = e.target;
-      if (!this.props.validation.test(value)) {
+      if (!value) {
         this.setProps({
-          error: value
-            ? this.props.validationText
-            : "Поле не должно быть пустым",
-          value,
+          error: "Поле не должно быть пустым",
           inputErrorClassName: "_global-style__error-validation",
         });
       } else {

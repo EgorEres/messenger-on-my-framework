@@ -19,10 +19,17 @@ function setXHRHeaders(xhr, headers) {
   }
 }
 
+const host = "https://ya-praktikum.tech/api/v2";
+
+const defaultHeaders = {
+  accept: "application/json",
+  "content-type": "application/json",
+};
+
 class HTTPTransport {
   get(url, options = {}) {
     const query = queryStringify(options.data);
-    const urlWithParams = query ? `${url}?${query}` : url;
+    const urlWithParams = query ? `${host}${url}?${query}` : `${host}${url}`;
 
     return this.request(
       urlWithParams,
@@ -33,7 +40,7 @@ class HTTPTransport {
 
   put(url, options = {}) {
     return this.request(
-      url,
+      `${host}${url}`,
       { ...options, method: METHODS.PUT },
       options.timeout
     );
@@ -41,7 +48,7 @@ class HTTPTransport {
 
   post(url, options = {}) {
     return this.request(
-      url,
+      `${host}${url}`,
       { ...options, method: METHODS.POST },
       options.timeout
     );
@@ -49,15 +56,15 @@ class HTTPTransport {
 
   delete(url, options = {}) {
     return this.request(
-      url,
+      `${host}${url}`,
       { ...options, method: METHODS.DELETE },
       options.timeout
     );
   }
 
   request(url, options, timeout = 5000) {
-    const { method, headers, data } = options;
-
+    const { method, headers = {}, data } = options;
+    Object.assign(headers, defaultHeaders);
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
 
@@ -82,4 +89,4 @@ class HTTPTransport {
   }
 }
 
-export default HTTPTransport;
+export default new HTTPTransport();

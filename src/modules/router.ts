@@ -28,7 +28,7 @@ class Router {
   }
 
   use(pathname, block) {
-    const route = new Route(pathname, block, { rootQuery: this._rootQuery });
+    const route = new Route(pathname, block, this._rootQuery);
 
     this.routes.push(route);
 
@@ -36,7 +36,7 @@ class Router {
   }
 
   default(block) {
-    const route = new Route("*", block, { rootQuery: this._rootQuery });
+    const route = new Route("*", block, this._rootQuery);
 
     this.defaultRoute = route;
 
@@ -45,7 +45,6 @@ class Router {
 
   start() {
     window.onpopstate = (event) => {
-      console.log("it is event");
       this._onRoute(event.currentTarget.location.pathname);
     };
 
@@ -54,7 +53,6 @@ class Router {
 
   _onRoute(pathname) {
     const route = this.getRoute(pathname);
-    console.log(route);
     if (!route) {
       return;
     }
