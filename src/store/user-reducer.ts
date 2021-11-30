@@ -1,10 +1,10 @@
 const initialState = {
   id: null,
-  first_name: "Имя",
-  second_name: "Фамилия",
-  login: "logininyshka",
-  email: "email@mail.com",
-  phone: "900123123",
+  first_name: null,
+  second_name: null,
+  login: null,
+  email: null,
+  phone: null,
   avatar: null,
   withoutGetUserInfo: false,
 };

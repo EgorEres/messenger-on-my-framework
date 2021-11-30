@@ -21,15 +21,18 @@ export default class Block {
 
   props: any;
 
+  state: any;
+
   eventBus: () => EventBus;
 
-  constructor(template: string, props = {}) {
+  constructor(template: string, props = {}, state = {}) {
     const eventBus = new EventBus();
     this.eventBus = () => eventBus;
 
     this._meta = { template, props };
     this._element = document.createElement("div");
     this.props = this._makePropsProxy(props);
+    this.state = this._makeStateProxy(state);
 
     this._registerEvents(eventBus);
     eventBus.emit(Block.EVENTS.FLOW_CWM);
@@ -76,6 +79,20 @@ export default class Block {
         target[prop as keyof typeof target] = value;
 
         this.eventBus().emit(Block.EVENTS.FLOW_CDU, this.props, target);
+        return true;
+      },
+      deleteProperty() {
+        throw new Error("Нет доступа");
+      },
+    });
+  }
+
+  _makeStateProxy(state) {
+    return new Proxy(state, {
+      set: (target, prop, value) => {
+        target[prop as keyof typeof target] = value;
+
+        this.eventBus().emit(Block.EVENTS.FLOW_CDU, this.state, target);
         return true;
       },
       deleteProperty() {

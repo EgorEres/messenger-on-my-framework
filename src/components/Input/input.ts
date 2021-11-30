@@ -18,8 +18,7 @@ const isValid = (value, notEmpty, validation, validationText) => {
   const defaultText = "Заполнено не верно";
   if (notEmpty && !value) return "Поле не должно быть пустым";
 
-  if (validation)
-    return validation.test(value) ? null : validationText || defaultText;
+  if (validation) return validation.test(value) ? null : validationText || defaultText;
 
   return null;
 };
@@ -34,12 +33,7 @@ export default class Input extends Block {
 
     input.addEventListener("blur", (e: { target }) => {
       const { value } = e.target;
-      const validationText = isValid(
-        value,
-        this.props.notEmpty,
-        this.props.validation,
-        this.props.validationText
-      );
+      const validationText = isValid(value, this.props.notEmpty, this.props.validation, this.props.validationText);
       if (validationText) {
         this.setProps({
           error: validationText,

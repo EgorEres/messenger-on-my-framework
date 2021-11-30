@@ -14,6 +14,7 @@ class Router {
   static __instance;
 
   constructor(rootQuery) {
+    console.log("in constructon router", rootQuery);
     if (Router.__instance) {
       return Router.__instance;
     }

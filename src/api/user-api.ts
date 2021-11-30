@@ -1,6 +1,6 @@
 import HTTPTransport from "./HTTPTransport";
 
-// получение пользователя (нужны кукисы)
+// получение пользователя (сработает если есть куки)
 function getUser() {
   return HTTPTransport.get("/auth/user")
     .then((res) => {
@@ -70,10 +70,3 @@ export default {
   postUserSignUp,
   postUserLogout,
 };
-
-// email: "email@mail.ru"
-// first_name: "string"
-// login: "EropEropErop"
-// password: "string"
-// phone: "900-8009924"
-// second_name: "string"

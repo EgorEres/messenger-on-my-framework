@@ -19,7 +19,7 @@ class Login extends Block {
 
     userApi.getUser().then((userData) => {
       if (userData) {
-        console.info("user already auth");
+        console.info("user already auth", userData);
         store.dispatch({ type: "SET_USER_DATA", payload: userData });
         router.go("/messenger");
       }

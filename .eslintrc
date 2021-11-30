@@ -30,6 +30,7 @@
         "class-methods-use-this": 0,
         "no-param-reassign": "off",
         "import/no-cycle": 0,
-        "no-plusplus": 0
+        "no-plusplus": 0,
+        "prettier/prettier":  ["error", {"printWidth": 120}]
     }
 }

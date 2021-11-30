@@ -4,6 +4,11 @@ import store from "../../store/index";
 const userData = store.getState("user");
 
 const data = {
+  avatar: {
+    url: userData.avatar,
+    errorLoad: "",
+    isSuccessLoad: false,
+  },
   children: [
     {
       name: "Имя",
@@ -45,15 +50,15 @@ const data = {
       value: userData.phone,
     },
     {
-      name: "Пароль",
+      name: "Старый пароль",
       type: "password",
-      inputName: "password",
+      inputName: "oldPassword",
       id: "input-password",
     },
     {
-      name: "Повторите пароль",
+      name: "Новый пароль",
       type: "password",
-      inputName: "re-password",
+      inputName: "newPassword",
       id: "input-re-password",
     },
   ],

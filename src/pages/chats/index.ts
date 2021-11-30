@@ -12,7 +12,7 @@ class Chats extends Block {
   }
 
   componentWillMount() {
-    const checkStore = store.getState();
+    const checkStore = store.getState("user");
 
     console.log("in chats page:", checkStore);
 
@@ -28,9 +28,7 @@ class Chats extends Block {
   }
 
   componentDidMount() {
-    const chatSectionNode = this._element.querySelector(
-      "#chat-section"
-    ) as Element;
+    const chatSectionNode = this._element.querySelector("#chat-section") as Element;
 
     // отрисовываем чаты
     if (this.props.activeChats.length) {
@@ -46,28 +44,20 @@ class Chats extends Block {
       chatSectionNode.innerHTML = emptyChatTemplate;
     }
 
-    this._element
-      .querySelector("container")
-      ?.addEventListener("click", (e: { target }) => {
-        const usedId = e.target.id;
-        this.setProps({
-          activeChats: [usedId],
-          chats: this.props.chats.map((chat) =>
-            chat.id === usedId
-              ? { ...chat, isActive: true }
-              : { ...chat, isActive: false }
-          ),
-        });
+    this._element.querySelector("container")?.addEventListener("click", (e: { target }) => {
+      const usedId = e.target.id;
+      this.setProps({
+        activeChats: [usedId],
+        chats: this.props.chats.map((chat) =>
+          chat.id === usedId ? { ...chat, isActive: true } : { ...chat, isActive: false }
+        ),
       });
+    });
 
     // temporary listeners for routing
-    this._element
-      .querySelector("#go-to-500")
-      ?.addEventListener("click", () => router.go("/500"));
+    this._element.querySelector("#go-to-500")?.addEventListener("click", () => router.go("/500"));
 
-    this._element
-      .querySelector("#go-to-settings")
-      ?.addEventListener("click", () => router.go("/settings"));
+    this._element.querySelector("#go-to-settings")?.addEventListener("click", () => router.go("/settings"));
   }
 }
 

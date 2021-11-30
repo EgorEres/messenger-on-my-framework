@@ -23,6 +23,38 @@
   border: 1px solid #000;
   border-radius: 50%;
   margin: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.avatar-errorLoad {
+  border: 3px solid red;
+}
+
+.avatar-successLoad {
+  border: 3px solid green;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.avatar label {
+  height: 50px;
+  width: 100px;
+  text-align: center;
+  padding-top: 40px;
+  cursor: pointer;
+  line-height: 10px;
+}
+
+.avatar-input {
+  display: none;
 }
 
 .inputs-block {

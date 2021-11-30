@@ -22,8 +22,12 @@
 
 .profile-menu {
   width: 40px;
-  font-size: 20px;
+  height: 35px;
   cursor: pointer;
+  background-image: url(./img/settings.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  transform: rotate(90deg);
 }
 
 .search {
@@ -33,6 +37,7 @@
   border-radius: 2px;
   width: 100%;
   box-sizing: border-box;
+  margin-left: 10px;
 }
 
 .contact {

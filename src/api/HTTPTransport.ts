@@ -13,9 +13,7 @@ function queryStringify(data = {}) {
 
 function setXHRHeaders(xhr, headers) {
   if (headers) {
-    Object.entries(headers).forEach(([key, value]) =>
-      xhr.setRequestHeader(key, value)
-    );
+    Object.entries(headers).forEach(([key, value]) => xhr.setRequestHeader(key, value));
   }
 }
 
@@ -31,45 +29,28 @@ class HTTPTransport {
     const query = queryStringify(options.data);
     const urlWithParams = query ? `${host}${url}?${query}` : `${host}${url}`;
 
-    return this.request(
-      urlWithParams,
-      { ...options, method: METHODS.GET },
-      options.timeout
-    );
+    return this.request(urlWithParams, { ...options, method: METHODS.GET });
   }
 
   put(url, options = {}) {
-    return this.request(
-      `${host}${url}`,
-      { ...options, method: METHODS.PUT },
-      options.timeout
-    );
+    return this.request(`${host}${url}`, { ...options, method: METHODS.PUT });
   }
 
   post(url, options = {}) {
-    return this.request(
-      `${host}${url}`,
-      { ...options, method: METHODS.POST },
-      options.timeout
-    );
+    return this.request(`${host}${url}`, { ...options, method: METHODS.POST });
   }
 
   delete(url, options = {}) {
-    return this.request(
-      `${host}${url}`,
-      { ...options, method: METHODS.DELETE },
-      options.timeout
-    );
+    return this.request(`${host}${url}`, { ...options, method: METHODS.DELETE });
   }
 
-  request(url, options, timeout = 5000) {
-    const { method, headers = {}, data } = options;
-    Object.assign(headers, defaultHeaders);
+  request(url, options) {
+    const { method, headers = defaultHeaders, data } = options;
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
 
       xhr.open(method, url, true);
-      xhr.timeout = timeout;
+      xhr.timeout = 5000;
       setXHRHeaders(xhr, headers);
       xhr.withCredentials = true;
 

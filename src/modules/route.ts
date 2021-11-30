@@ -10,6 +10,7 @@ class Route {
   _props;
 
   constructor(pathname, view, props) {
+    console.log("in constructor route", props);
     this._pathname = pathname;
     this._blockClass = view;
     this._block = null;
@@ -32,6 +33,7 @@ class Route {
 
   render() {
     if (!this._block) {
+      console.log("before render block", this._props);
       this._block = new this._blockClass(this._props);
       render(this._block);
     }

@@ -14,13 +14,9 @@ class Registration extends Block {
   }
 
   componentDidMount() {
-    this._element
-      ?.querySelector("#login-sign-in")
-      ?.addEventListener("click", () => router.go("/"));
+    this._element?.querySelector("#login-sign-in")?.addEventListener("click", () => router.go("/"));
 
-    const form = this._element?.querySelector(
-      "#registration-form"
-    ) as HTMLFormElement;
+    const form = this._element?.querySelector("#registration-form") as HTMLFormElement;
 
     // Добавляем инпуты тут, что-бы не прогонять их через handlebars.compile
     this.props.children.forEach((childData) => {
@@ -33,9 +29,7 @@ class Registration extends Block {
       let error = false;
 
       const newChildren = this.props.children.map((childData) => {
-        const elem = this._element?.querySelector(
-          `#${childData.id}`
-        ) as HTMLInputElement;
+        const elem = this._element?.querySelector(`#${childData.id}`) as HTMLInputElement;
         if (!elem.value) {
           error = true;
           return {

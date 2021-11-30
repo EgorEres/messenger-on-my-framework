@@ -1,7 +1,7 @@
 const chatsTemplate: string = `<div class='_chats__wrapper'>
   <div class='_chats__list'>
     <header>
-      <div class='_chats__profile-menu' id='go-to-settings'>S</div>
+      <div class='_chats__profile-menu' id='go-to-settings'></div>
       <input class='_chats__search' placeholder="Поиск" />
     </header>
 
