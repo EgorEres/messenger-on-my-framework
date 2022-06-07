@@ -112,3 +112,36 @@
 .close-button::after {
   transform: rotate(-45deg);
 }
+
+.change_pass_modal-wrapper {
+  display: none;
+}
+
+.change_pass_modal-wrapper_show {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+}
+
+.change_pass_modal-form {
+  height: 280px;
+  width: 500px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+}
+
+.change_pass_modal-form h2 {
+  padding-bottom: 40px;
+}
+
+.change_pass_modal-buttons {
+  position: absolute;
+  bottom: 20px;
+  width: 500px;
+  display: flex;
+  gap: 10px;
+}

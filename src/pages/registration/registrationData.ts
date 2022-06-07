@@ -36,8 +36,8 @@ const data = {
       type: "text",
       inputName: "email",
       id: "input-email",
-      validation: validation.checkEmail,
-      validationText: "Невалидный email, пример: mail@gmail.com",
+      // validation: validation.checkEmail,
+      // validationText: "Невалидный email, пример: mail@gmail.com",
       notEmpty: true,
     },
     {
@@ -45,8 +45,8 @@ const data = {
       type: "text",
       inputName: "phone",
       id: "input-phone",
-      validation: validation.checkPhone,
-      validationText: "Проверьте правильность номера телефона",
+      // validation: validation.checkPhone,
+      // validationText: "Проверьте правильность номера телефона",
       notEmpty: true,
     },
     {

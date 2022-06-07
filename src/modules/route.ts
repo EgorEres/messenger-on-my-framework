@@ -7,14 +7,10 @@ class Route {
 
   _block;
 
-  _props;
-
-  constructor(pathname, view, props) {
-    console.log("in constructor route", props);
+  constructor(pathname, view) {
     this._pathname = pathname;
     this._blockClass = view;
     this._block = null;
-    this._props = props;
   }
 
   navigate(pathname) {
@@ -33,8 +29,7 @@ class Route {
 
   render() {
     if (!this._block) {
-      console.log("before render block", this._props);
-      this._block = new this._blockClass(this._props);
+      this._block = new this._blockClass();
       render(this._block);
     }
   }

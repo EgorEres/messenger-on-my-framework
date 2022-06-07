@@ -4,7 +4,7 @@ function updateProfile(data) {
   return HTTPTransport.put("/user/profile", {
     data: JSON.stringify(data),
   })
-    .then((res) => {
+    .then((res: XMLHttpRequest) => {
       if (res.status !== 200) {
         const errorText = JSON.parse(res.response)?.reason;
         return { errorText };
@@ -23,7 +23,7 @@ function updateAvatar(file) {
     data: file,
     headers: { accept: "application/json" },
   })
-    .then((res) => {
+    .then((res: XMLHttpRequest) => {
       if (res.status !== 200) {
         const errorText = JSON.parse(res.response)?.reason;
         return { errorText };
@@ -38,7 +38,7 @@ function updateAvatar(file) {
 
 function updatePassword(data) {
   return HTTPTransport.put("/user/password", { data: JSON.stringify(data) })
-    .then((res) => {
+    .then((res: XMLHttpRequest) => {
       if (res.status !== 200) {
         const errorText = JSON.parse(res.response)?.reason;
         return { errorText };

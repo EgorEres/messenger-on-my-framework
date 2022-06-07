@@ -2,11 +2,10 @@ import "./settings.css";
 import settingsTemplate from "./settingsTemplate";
 import Block from "../../modules/block";
 import data from "./settingsData";
-import Input from "../../components/Input/input";
 import router from "../../router";
 import userApi from "../../api/user-api";
-import store from "../../store/index";
 import settingsApi from "../../api/settings-api";
+import { renderInputs, setModalActions } from "./settingsHelpers";
 
 const fieldNames = ["first_name", "second_name", "login", "email", "phone"];
 
@@ -25,24 +24,20 @@ class Settings extends Block {
   }
 
   componentWillMount() {
-    console.log("check state in on will mount:", this.state);
-    const userData = store.getState("user");
     this.setProps({
       avatar: {
         ...this.props.avatar,
-        url: userData.avatar,
       },
     });
   }
 
   componentDidMount() {
-    console.log("check state in on did mount:", this.state.user, this.props);
-
+    const { inputs, passwordInputs } = this.props;
+    renderInputs(this._element, inputs, passwordInputs);
+    setModalActions(this._element, passwordInputs, this.setProps);
     this._element?.querySelector("#logout-button")?.addEventListener("click", (e) => {
       e.preventDefault();
-
       userApi.postUserLogout().then(() => {
-        store.dispatch({ type: "SET_WITHOUT_GET_USER_INFO", payload: true });
         router.go("/");
       });
     });
@@ -79,15 +74,6 @@ class Settings extends Block {
     });
 
     const form = this._element?.querySelector("#settings-form") as HTMLFormElement;
-
-    // Добавляем инпуты тут, что-бы не прогонять их через handlebars.compile
-    this.props.children.forEach((childData) => {
-      // console.log(childData);
-      const input = new Input(childData).getContent();
-      form.appendChild(input);
-    });
-
-    // TODO move avatar input here
 
     form.addEventListener("submit", (e) => {
       e.preventDefault();

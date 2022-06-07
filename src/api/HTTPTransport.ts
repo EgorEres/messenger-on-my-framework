@@ -24,32 +24,38 @@ const defaultHeaders = {
   "content-type": "application/json",
 };
 
+type OptionsType = {
+  data?: XMLHttpRequestBodyInit;
+  method?: string;
+  headers?: {};
+};
+
 class HTTPTransport {
-  get(url, options = {}) {
+  get(url: string, options: OptionsType = {}) {
     const query = queryStringify(options.data);
     const urlWithParams = query ? `${host}${url}?${query}` : `${host}${url}`;
 
     return this.request(urlWithParams, { ...options, method: METHODS.GET });
   }
 
-  put(url, options = {}) {
+  put(url: string, options: OptionsType = {}) {
     return this.request(`${host}${url}`, { ...options, method: METHODS.PUT });
   }
 
-  post(url, options = {}) {
+  post(url: string, options: OptionsType = {}) {
     return this.request(`${host}${url}`, { ...options, method: METHODS.POST });
   }
 
-  delete(url, options = {}) {
+  delete(url: string, options: OptionsType = {}) {
     return this.request(`${host}${url}`, { ...options, method: METHODS.DELETE });
   }
 
-  request(url, options) {
+  request(url: string, options: OptionsType) {
     const { method, headers = defaultHeaders, data } = options;
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
 
-      xhr.open(method, url, true);
+      xhr.open(method!, url, true);
       xhr.timeout = 5000;
       setXHRHeaders(xhr, headers);
       xhr.withCredentials = true;

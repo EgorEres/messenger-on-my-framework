@@ -9,12 +9,9 @@ class Router {
 
   _currentRoute;
 
-  _rootQuery;
-
   static __instance;
 
-  constructor(rootQuery) {
-    console.log("in constructon router", rootQuery);
+  constructor() {
     if (Router.__instance) {
       return Router.__instance;
     }
@@ -23,13 +20,12 @@ class Router {
     this.defaultRoute = null;
     this.history = window.history;
     this._currentRoute = null;
-    this._rootQuery = rootQuery;
 
     Router.__instance = this;
   }
 
   use(pathname, block) {
-    const route = new Route(pathname, block, this._rootQuery);
+    const route = new Route(pathname, block);
 
     this.routes.push(route);
 
@@ -37,7 +33,7 @@ class Router {
   }
 
   default(block) {
-    const route = new Route("*", block, this._rootQuery);
+    const route = new Route("*", block);
 
     this.defaultRoute = route;
 

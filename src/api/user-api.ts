@@ -3,7 +3,7 @@ import HTTPTransport from "./HTTPTransport";
 // получение пользователя (сработает если есть куки)
 function getUser() {
   return HTTPTransport.get("/auth/user")
-    .then((res) => {
+    .then((res: XMLHttpRequest) => {
       if (res.status !== 200) {
         console.error("can not get user:", res.response);
         return null;
@@ -17,7 +17,7 @@ function getUser() {
 // логин
 function postUserSignIn(data) {
   return HTTPTransport.post("/auth/signin", { data: JSON.stringify(data) })
-    .then((res) => {
+    .then((res: XMLHttpRequest) => {
       if (res.status !== 200) {
         const errorText = JSON.parse(res.response)?.reason;
         return { errorText };
@@ -41,7 +41,7 @@ const mockPromise = new Promise((resolve) => {
   resolve();
 }).then(() => {
   return {
-    errorText: "email is not validч",
+    errorText: "email is not valid",
   };
 });
 
@@ -51,7 +51,7 @@ function postUserSignUp(data) {
     return mockPromise;
   }
   return HTTPTransport.post("/auth/signup", { data: JSON.stringify(data) })
-    .then((res) => {
+    .then((res: XMLHttpRequest) => {
       if (res.status !== 200) {
         const errorText = JSON.parse(res.response)?.reason;
         return { errorText };

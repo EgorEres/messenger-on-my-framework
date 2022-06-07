@@ -5,7 +5,6 @@ import data from "./registrationData";
 import Input from "../../components/Input/input";
 import router from "../../router";
 import userApi from "../../api/user-api";
-import store from "../../store/index";
 import errorsLocal from "../../utils/errorsLocal";
 
 class Registration extends Block {
@@ -56,11 +55,6 @@ class Registration extends Block {
 
         userApi.postUserSignUp(registrationData).then((res) => {
           if (res.id) {
-            store.dispatch({
-              type: "SET_USER_DATA",
-              payload: { ...registrationData, id: res.id },
-            });
-
             router.go("/messenger");
             return;
           }

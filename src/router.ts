@@ -5,11 +5,8 @@ import Registration from "./pages/registration/index";
 import Login from "./pages/login/index";
 import Settings from "./pages/settings/index";
 import Chats from "./pages/chats/index";
-import store from "./store/index";
 
-const state = store.getState();
-console.log("main router", state);
-const router = new Router(state);
+const router = new Router();
 
 router.default(Page404);
 router.use("/", Login);

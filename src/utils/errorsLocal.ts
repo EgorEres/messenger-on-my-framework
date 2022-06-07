@@ -17,7 +17,6 @@ const errorsOptions = {
   },
 };
 
-const errorsLocal = (errorText) =>
-  errorsOptions[errorText] || { text: errorText, fieldType: "main" };
+const errorsLocal = (errorText) => errorsOptions[errorText] || { text: errorText, fieldType: "main" };
 
 export default errorsLocal;
