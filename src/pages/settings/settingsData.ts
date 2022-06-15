@@ -1,8 +1,11 @@
 import validation from "../../utils/validation";
 
+const user = localStorage.getItem("user") || "";
+const userParse = JSON.parse(user);
+
 const data = {
   avatar: {
-    url: "",
+    url: userParse.avatar || "",
     errorLoad: "",
     isSuccessLoad: false,
   },
@@ -12,21 +15,21 @@ const data = {
       type: "text",
       inputName: "first_name",
       id: "input-first_name",
-      value: "",
+      value: userParse.first_name || "",
     },
     {
       name: "Фамилия",
       type: "text",
       inputName: "second_name",
       id: "input-second_name",
-      value: "",
+      value: userParse.second_name || "",
     },
     {
       name: "Логин",
       type: "text",
       inputName: "login",
       id: "input-login",
-      value: "",
+      value: userParse.login || "",
     },
     {
       name: "Почта",
@@ -35,7 +38,7 @@ const data = {
       id: "input-email",
       validation: validation.checkEmail,
       validationText: "Невалидный email, пример: mail@gmail.com",
-      value: "",
+      value: userParse.email || "",
     },
     {
       name: "Телефон",
@@ -44,7 +47,7 @@ const data = {
       id: "input-phone",
       validation: validation.checkPhone,
       validationText: "Проверьте правильность номера телефона",
-      value: "",
+      value: userParse.phone || "",
     },
   ],
   passwordInputs: [

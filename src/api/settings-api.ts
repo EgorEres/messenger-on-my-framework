@@ -1,3 +1,4 @@
+import { ChangePassType } from "./apiTypings";
 import HTTPTransport from "./HTTPTransport";
 
 function updateProfile(data) {
@@ -36,7 +37,7 @@ function updateAvatar(file) {
     });
 }
 
-function updatePassword(data) {
+function updatePassword(data: ChangePassType) {
   return HTTPTransport.put("/user/password", { data: JSON.stringify(data) })
     .then((res: XMLHttpRequest) => {
       if (res.status !== 200) {

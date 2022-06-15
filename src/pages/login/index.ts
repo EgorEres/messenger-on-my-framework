@@ -16,6 +16,7 @@ class Login extends Block {
     userApi.getUser().then((userData) => {
       if (userData) {
         console.info("user already auth", userData);
+        localStorage.setItem("user", JSON.stringify(userData));
         router.go("/messenger");
       }
     });

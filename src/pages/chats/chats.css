@@ -3,12 +3,21 @@
   height: 100vh;
 }
 
-.list {
+.list,
+.userList {
   width: 300px;
   background: #469ba0;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+}
+
+.userList {
+  display: none;
+}
+
+.userList-show {
+  display: flex;
 }
 
 .list header {
@@ -44,6 +53,13 @@
   padding: 10px 5px;
   margin-bottom: 5px;
   background: #3c8084;
+}
+
+.user {
+  padding: 5px;
+  margin-bottom: 5px;
+  background: #3c8084;
+  width: auto;
 }
 
 .contact:hover {
@@ -99,4 +115,42 @@
 
 .message-direction-from {
   text-align: right;
+}
+
+.addChat_modal-wrapper,
+.addUserToChat_modal-wrapper {
+  display: none;
+}
+
+.addChat_modal-wrapper_show,
+.addUserToChat_modal-wrapper_show {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+}
+
+.addChat_modal-form,
+.addUserToChat_modal-form {
+  height: 190px;
+  width: 500px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+}
+
+.addChat_modal-form h2,
+.addUserToChat_modal-form h2 {
+  padding-bottom: 30px;
+}
+
+.addChat_modal-buttons,
+.addUserToChat_modal-buttons {
+  position: absolute;
+  bottom: 20px;
+  width: 500px;
+  display: flex;
+  gap: 10px;
 }

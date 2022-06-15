@@ -7,7 +7,7 @@ const settingsTemplate = `<div class='_global-style__position-on-center _setting
     <div class='_settings__avatar _settings__avatar{{#if avatar.isSuccessLoad}}-successLoad{{/if}}{{#if avatar.errorLoad}}-errorLoad{{/if}}'>
     <label for="avatar-input">
       {{#if avatar.url}}
-        <img src="https://ya-praktikum.tech/api/v2/resources/{{avatar.url}}">
+        <img src="https://ya-praktikum.tech/api/v2/resources{{avatar.url}}">
       {{/if}}
       Avatar
     </label>

@@ -4,6 +4,10 @@ import Block from "../../modules/block";
 import data from "./chatsData";
 import Messenger from "./chatComponents/massanger/index";
 import router from "../../router";
+import messengerApi from "../../api/messenger-api";
+import createChatHelper from "./helpers/createChatHelper";
+import setActiveChatHelper from "./helpers/setActiveChatHelper";
+import addUserToChatHelper from "./helpers/addUserToChatHelper";
 
 class Chats extends Block {
   constructor() {
@@ -11,43 +15,38 @@ class Chats extends Block {
   }
 
   componentWillMount() {
-    if (this.props.activeChats.length) {
-      const newChatsList = this.props.chats.map((chat) => {
-        if (this.props.activeChats.includes(chat.id)) {
-          return { ...chat, isActive: true };
-        }
-        return chat;
-      });
-      this.setProps({ chats: newChatsList });
-    }
+    messengerApi.getChats().then((chats) => {
+      this.setProps({ chats });
+    });
+    // if (this.props.activeChats.length) {
+    //   const newChatsList = this.props.chats.map((chat) => {
+    //     if (this.props.activeChats.includes(chat.id)) {
+    //       return { ...chat, isActive: true };
+    //     }
+    //     return chat;
+    //   });
+    //   this.setProps({ chats: newChatsList });
+    // }
   }
 
   componentDidMount() {
     const chatSectionNode = this._element.querySelector("#chat-section") as Element;
 
+    setActiveChatHelper(this._element, this.setProps, this.props.chats);
+    createChatHelper(this._element, this.setProps, this.props.addChatInput);
+    addUserToChatHelper(this._element, this.setProps, this.props);
+
     // отрисовываем чаты
-    if (this.props.activeChats.length) {
-      this.props.activeChats.forEach((chatId) => {
-        const chatData = this.props.chats.find(({ id }) => chatId === id);
-        const messengerContent = new Messenger({
-          ...chatData,
-          messages: this.props.messages[chatData.id],
-        }).getContent();
-        chatSectionNode.appendChild(messengerContent);
-      });
+    if (this.props.activeChats) {
+      const chatData = this.props.chats.find(({ id }) => this.props.activeChats === id);
+      const messengerContent = new Messenger({
+        ...chatData,
+        messages: [],
+      }).getContent();
+      chatSectionNode.appendChild(messengerContent);
     } else {
       chatSectionNode.innerHTML = emptyChatTemplate;
     }
-
-    this._element.querySelector("container")?.addEventListener("click", (e: { target }) => {
-      const usedId = e.target.id;
-      this.setProps({
-        activeChats: [usedId],
-        chats: this.props.chats.map((chat) =>
-          chat.id === usedId ? { ...chat, isActive: true } : { ...chat, isActive: false }
-        ),
-      });
-    });
 
     // temporary listeners for routing
     this._element.querySelector("#go-to-500")?.addEventListener("click", () => router.go("/500"));
