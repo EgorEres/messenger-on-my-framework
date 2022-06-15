@@ -18,29 +18,11 @@ const data: Page404Props = {
 };
 
 export default class Page404 extends Block {
-  constructor(store) {
-    console.log(store?.getState());
-    store.dispatch({
-      type: "SET_USER_DATA",
-      payload: {
-        id: 123,
-        first_name: "sssss",
-        second_name: "vvvv",
-        display_name: "skdjfkshdfkj",
-        login: "userLogin",
-        email: "my@email.com",
-        phone: "89223332211",
-        avatar: "/path/to/avatar.jpg",
-      },
-    });
-    console.log(store?.getState());
-
+  constructor() {
     super(notFoundTemplate, data);
   }
 
   componentDidMount() {
-    this._element
-      .querySelector(`#${buttonId}`)
-      ?.addEventListener("click", () => router.go("/messenger"));
+    this._element.querySelector(`#${buttonId}`)?.addEventListener("click", () => router.go("/messenger"));
   }
 }
