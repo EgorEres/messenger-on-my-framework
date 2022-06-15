@@ -21,8 +21,8 @@ const changePassHelper = (element, setProps, avatarProps) => {
             isSuccessLoad: !!res.avatar,
           },
         });
-        const user = localStorage.getItem("user") || "";
-        const userParse = JSON.parse(user);
+        const user = localStorage.getItem("user");
+        const userParse = user ? JSON.parse(user) : {};
         const newUserData = { ...userParse, avatar: res.avatar };
         localStorage.setItem("user", JSON.stringify(newUserData));
       });

@@ -1,7 +1,7 @@
 import validation from "../../utils/validation";
 
-const user = localStorage.getItem("user") || "";
-const userParse = JSON.parse(user);
+const user = localStorage.getItem("user");
+const userParse = user ? JSON.parse(user) : {};
 
 const data = {
   avatar: {
