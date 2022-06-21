@@ -5,7 +5,7 @@ import data from "./chatsData";
 import Messenger from "./chatComponents/massanger/index";
 import router from "../../router";
 import messengerApi from "../../api/messenger-api";
-import createChatHelper from "./helpers/createChatHelper";
+import setCreateChatListenersHelper from "./helpers/createChatHelper";
 import setActiveChatHelper from "./helpers/setActiveChatHelper";
 import addUserToChatHelper from "./helpers/addUserToChatHelper";
 
@@ -18,22 +18,13 @@ class Chats extends Block {
     messengerApi.getChats().then((chats) => {
       this.setProps({ chats });
     });
-    // if (this.props.activeChats.length) {
-    //   const newChatsList = this.props.chats.map((chat) => {
-    //     if (this.props.activeChats.includes(chat.id)) {
-    //       return { ...chat, isActive: true };
-    //     }
-    //     return chat;
-    //   });
-    //   this.setProps({ chats: newChatsList });
-    // }
   }
 
   componentDidMount() {
     const chatSectionNode = this._element.querySelector("#chat-section") as Element;
 
     setActiveChatHelper(this._element, this.setProps, this.props.chats);
-    createChatHelper(this._element, this.setProps, this.props.addChatInput);
+    setCreateChatListenersHelper(this._element, this.setProps, this.props.addChatInput);
     addUserToChatHelper(this._element, this.setProps, this.props);
 
     // отрисовываем чаты

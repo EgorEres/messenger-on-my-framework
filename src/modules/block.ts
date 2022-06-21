@@ -1,6 +1,10 @@
 import * as Handlebars from "handlebars";
 import EventBus from "./eventBus";
 
+export type SetPropsType = {
+  [key: string]: any;
+};
+
 export default class Block {
   static EVENTS = {
     FLOW_CWM: "flow:component-will-mount",
@@ -46,7 +50,7 @@ export default class Block {
     eventBus.on(Block.EVENTS.FLOW_CWU, this._componentWillUnmount.bind(this));
   }
 
-  setProps = (nextProps: { [key: string]: any }) => {
+  setProps = (nextProps: SetPropsType) => {
     if (!nextProps) {
       return;
     }

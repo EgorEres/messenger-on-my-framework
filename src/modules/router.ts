@@ -1,13 +1,13 @@
 import Route from "./route";
 
 class Router {
-  routes;
+  routes: Route[];
 
-  defaultRoute;
+  defaultRoute: Route | null;
 
-  history;
+  history: History;
 
-  _currentRoute;
+  _currentRoute: Route | null;
 
   static __instance;
 
@@ -59,7 +59,7 @@ class Router {
     }
 
     this._currentRoute = route;
-    route.render(route, pathname);
+    route.render();
   }
 
   go(pathname) {

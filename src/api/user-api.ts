@@ -35,21 +35,8 @@ function postUserLogout() {
   return HTTPTransport.post("/auth/logout").catch((err) => console.error(err));
 }
 
-const mock = true;
-
-const mockPromise = new Promise((resolve) => {
-  resolve();
-}).then(() => {
-  return {
-    errorText: "email is not valid",
-  };
-});
-
 // регистрация
 function postUserSignUp(data) {
-  if (mock) {
-    return mockPromise;
-  }
   return HTTPTransport.post("/auth/signup", { data: JSON.stringify(data) })
     .then((res: XMLHttpRequest) => {
       if (res.status !== 200) {

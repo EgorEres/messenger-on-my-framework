@@ -1,23 +1,16 @@
+import { InputProps } from "../../components/Input/input";
+
+export type ChatType = {
+  name: string;
+  id: number;
+};
+
 export type PageChatsPropsType = {
-  chats: {
-    name: string;
-  }[];
+  chats: ChatType[];
   users: any[];
-  activeChat: string | null;
+  activeChat: number | null;
   showAddChatModal: boolean;
   showAddUserToChatModal: boolean;
-  addChatInput: {
-    name: string;
-    type: string;
-    inputName: string;
-    id: string;
-    value: string;
-  };
-  addUserInput: {
-    name: string;
-    type: string;
-    inputName: string;
-    id: string;
-    value: string;
-  };
+  addChatInput: InputProps;
+  addUserInput: InputProps;
 };

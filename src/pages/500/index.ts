@@ -23,8 +23,9 @@ export default class Page500 extends Block {
   }
 
   componentDidMount() {
-    this._element
-      .querySelector(`#${buttonId}`)
-      ?.addEventListener("click", () => router.go("/messenger"));
+    const button = document.getElementById(buttonId);
+    if (button) {
+      button.addEventListener("click", () => router.go("/messenger"));
+    }
   }
 }
