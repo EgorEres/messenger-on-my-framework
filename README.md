@@ -11,4 +11,5 @@ lint - запуск eslint
 Макет https://www.figma.com/file/TzjkKKq7aIREG3VImMU4jJ/Chat?node-id=0%3A1
 
 
-ссылка на реквест: https://github.com/EgorEres/middle.messenger.praktikum.yandex/pull/3
+
+ссылка на реквест: https://github.com/EgorEres/middle.messenger.praktikum.yandex/pull/4
