@@ -2,12 +2,13 @@
   "name": "multi_chat",
   "version": "1.0.0",
   "description": "",
-  "browserslist": "> 0.5%, last 2 versions",
+  "browserslist": "last 2 versions",
   "scripts": {
     "start": "node server.js",
     "start:dev": "parcel static/index.html -p 3000 --no-cache --no-source-maps",
     "build": "parcel build static/index.html --no-cache --no-source-maps",
-    "lint": "eslint . --ext .ts"
+    "lint": "eslint . --ext .ts",
+    "test": "./node_modules/.bin/mocha"
   },
   "repository": {
     "type": "git",
@@ -20,8 +21,14 @@
   },
   "homepage": "https://github.com/EgorEres/multi_chat#readme",
   "devDependencies": {
+    "@babel/preset-env": "^7.18.6",
+    "@babel/preset-typescript": "^7.18.6",
+    "@babel/register": "^7.18.6",
+    "@types/chai": "^4.3.1",
+    "@types/mocha": "^9.1.1",
     "@typescript-eslint/eslint-plugin": "5.0.0",
     "@typescript-eslint/parser": "5.0.0",
+    "chai": "^4.3.6",
     "eslint": "7.32.0",
     "eslint-config-airbnb": "18.2.1",
     "eslint-config-airbnb-typescript": "14.0.1",
@@ -30,6 +37,7 @@
     "eslint-plugin-jsx-a11y": "6.4.1",
     "eslint-plugin-prettier": "4.0.0",
     "eslint-plugin-react": "7.26.1",
+    "mocha": "^10.0.0",
     "parcel-bundler": "1.12.5",
     "postcss": "8.3.6",
     "postcss-modules": "3.2.2",
