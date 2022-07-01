@@ -3,7 +3,11 @@ import settingsApi from "../../../api/settings-api";
 const fieldNames = ["first_name", "second_name", "login", "email", "phone"];
 
 const getChangedFields = (formData) => {
-  const profile = {};
+  const profile: {
+    display_name?: string;
+    first_name?: string;
+    second_name?: string;
+  } = {};
   fieldNames.forEach((name) => {
     const value = formData.get(name);
     profile[name] = value;

@@ -1,5 +1,4 @@
 import Button from "../../components/Button/button";
-import validation from "../../utils/validation";
 
 const data = {
   button: new Button({
