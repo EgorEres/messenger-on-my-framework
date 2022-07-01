@@ -1,0 +1,16 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "rootDir": "src",
+        "target": "es6",
+        "declaration": false,
+        "strictNullChecks": true,
+        "sourceMap": false,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "alwaysStrict": true,
+        "lib": ["dom", "es6", "dom.iterable", "es2017"],
+        "outDir": "dist/sources",
+    }
+}

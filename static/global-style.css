@@ -1,3 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+
+:root {
+  --main-color: #2a4344;
+  --main-bg-color: #caedef;
+  --border-color: #4f9b9f;
+  --bg-elem-color: #caedef;
+  --bg-elem-hv-color: #428e92;
+  --second-bg-color: #62c8ce;
+  --default-color: #fff;
+  --modal-bg-color: #53afb5;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,8 +18,8 @@
 
 body {
   font-family: 'Noto Sans JP', sans-serif;
-  color: #474563;
-  background: #CAEDEF;
+  color: var(--main-color);
+  background: var(--main-bg-color);
 }
 
 a {
@@ -14,9 +27,73 @@ a {
   text-decoration: none;
 }
 
+div {
+  width: 100%;
+}
+
 .position-on-center {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
+}
+
+input {
+  height: 35px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 10px;
+  margin-bottom: 5px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  outline: none;
+  text-align: left;
+  color: var(--main-color);
+  background: var(--bg-elem-color);
+}
+
+input.error-validation {
+  border-color: red;
+  background: #f5d2d2;
+}
+
+.error-validation-input-error {
+  font-size: 12px;
+  padding-bottom: 5px;
+  display: block;
+  margin-top: -5px;
+  color: red;
+}
+
+button,
+input[type="submit"] {
+  height: 35px;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 0 10px;
+  margin-bottom: 5px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: var(--default-color);
+  color: var(--main-color);
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background: var(--bg-elem-color);
+}
+
+button:hover {
+  background: var(--bg-elem-color);
+}
+
+button.secondary-button {
+  background: var(--main-color);
+  color: var(--default-color);
+}
+
+button.secondary-button:hover {
+  background: var(--bg-elem-hv-color);
 }

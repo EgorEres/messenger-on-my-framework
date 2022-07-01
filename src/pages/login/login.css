@@ -7,7 +7,7 @@
 
 .login-block {
   width: 250px;
-  background: #f9f9f9;
+  background: var(--modal-bg-color);
   height: 300px;
   display: flex;
   flex-wrap: wrap;
@@ -16,49 +16,13 @@
   border-radius: 10px;
 }
 
-.inputs-block span {
+.inputs-block {
   width: 100%;
-  font-size: 14px;
-}
-
-.inputs-block input {
-  width: 100%;
-  padding: 5px;
-  margin-bottom: 5px;
-  box-sizing: border-box;
 }
 
 .buttons-block {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-.buttons-block button {
-  padding: 10px 30px;
-  border-radius: 10px;
-  border: none;
-}
-
-.buttons-block button:hover {
-  cursor: pointer;
-}
-
-.buttons-block button:first-child {
-  background: #3369F3;
-  color: #fff;
-  margin-bottom: 5px;
-}
-
-.buttons-block button:first-child:hover {
-  background: #5982e9;
-}
-
-.buttons-block button:last-child {
-  background: #fff;
-  color: #3369F3;
-}
-
-.buttons-block button:last-child:hover {
-  background: rgb(235, 233, 233);
+  width: 100%;
 }

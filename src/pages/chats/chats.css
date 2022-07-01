@@ -1,22 +1,42 @@
 .wrapper {
+  display: flex;
   height: 100vh;
+}
+
+.list,
+.userList {
+  width: 300px;
+  background: #469ba0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.userList {
+  display: none;
+}
+
+.userList-show {
   display: flex;
 }
 
-.list {
-  width: 300px;
-  background: #469ba0;
-}
-
-.search-wrapper {
+.list header {
   display: flex;
   padding: 20px 10px;
 }
 
+.list container {
+  height: 100%;
+}
+
 .profile-menu {
   width: 40px;
-  font-size: 20px;
+  height: 35px;
   cursor: pointer;
+  background-image: url(./img/settings.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  transform: rotate(90deg);
 }
 
 .search {
@@ -26,6 +46,7 @@
   border-radius: 2px;
   width: 100%;
   box-sizing: border-box;
+  margin-left: 10px;
 }
 
 .contact {
@@ -34,18 +55,30 @@
   background: #3c8084;
 }
 
+.user {
+  padding: 5px;
+  margin-bottom: 5px;
+  background: #3c8084;
+  width: auto;
+}
+
 .contact:hover {
   cursor: pointer;
   background: #53b0b5;
 }
 
-.messages {
-  width: 100%;
-  background: #caedef;
+.contact-active {
+  padding: 10px 5px;
+  margin-bottom: 5px;
+  background: #1e6367;
+  color: #fff;
 }
 
-.messages-list {
-  height: calc(100vh - 40px);
+.messages {
+  width: 100%;
+  background: var(--bg-elem-color);
+  font-size: 20px;
+  max-width: 350px;
 }
 
 .messages-place {
@@ -60,4 +93,64 @@
   border: none;
   height: 40px;
   padding: 0 14px;
+}
+
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+.messages-list {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.message-direction-to {
+  text-align: left;
+}
+
+.message-direction-from {
+  text-align: right;
+}
+
+.addChat_modal-wrapper,
+.addUserToChat_modal-wrapper {
+  display: none;
+}
+
+.addChat_modal-wrapper_show,
+.addUserToChat_modal-wrapper_show {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+}
+
+.addChat_modal-form,
+.addUserToChat_modal-form {
+  height: 190px;
+  width: 500px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+}
+
+.addChat_modal-form h2,
+.addUserToChat_modal-form h2 {
+  padding-bottom: 30px;
+}
+
+.addChat_modal-buttons,
+.addUserToChat_modal-buttons {
+  position: absolute;
+  bottom: 20px;
+  width: 500px;
+  display: flex;
+  gap: 10px;
 }

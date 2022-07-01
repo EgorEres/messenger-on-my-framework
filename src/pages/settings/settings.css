@@ -1,5 +1,16 @@
 .wrapper {
-  background-color: #CAEDEF;
+  background: var(--bg-elem-color);
+}
+
+.settings-block {
+  width: 350px;
+  background: var(--modal-bg-color);
+  height: 650px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 30px;
+  border-radius: 10px;
 }
 
 .avatar {
@@ -12,7 +23,38 @@
   border: 1px solid #000;
   border-radius: 50%;
   margin: auto;
-  margin-bottom: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.avatar-errorLoad {
+  border: 3px solid red;
+}
+
+.avatar-successLoad {
+  border: 3px solid green;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.avatar label {
+  height: 50px;
+  width: 100px;
+  text-align: center;
+  padding-top: 40px;
+  cursor: pointer;
+  line-height: 10px;
+}
+
+.avatar-input {
+  display: none;
 }
 
 .inputs-block {
@@ -25,17 +67,6 @@
   font-size: 14px;
 }
 
-.inputs-block input {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 5px 20px;
-  margin-bottom: 5px;
-  background: #3C8084;
-  border: none;
-  height: 40px;
-  color: #fff;
-}
-
 .password_tip {
   padding-top: 20px;
   padding-bottom: 5px;
@@ -46,18 +77,71 @@
 .button-save {
   display: flex;
   justify-content: space-between;
-  padding-top: 25px;
+  gap: 10px;
+  padding-top: 20px;
 }
 
-.button-save button {
-  padding: 12px 25px;
-  border: none;
-  background: #1e6367;
-  color: #fff;
-  border-radius: 10px;
-}
-
-.button-save button:hover {
+.close-button {
+  position: absolute;
+  right: 32px;
+  top: 32px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
   cursor: pointer;
-  background: #428e92;
+}
+
+.close-button:hover {
+  opacity: 1;
+}
+
+.close-button::before,
+.close-button::after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 33px;
+  width: 2px;
+  background-color: #333;
+}
+
+.close-button::before {
+  transform: rotate(45deg);
+}
+
+.close-button::after {
+  transform: rotate(-45deg);
+}
+
+.change_pass_modal-wrapper {
+  display: none;
+}
+
+.change_pass_modal-wrapper_show {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+}
+
+.change_pass_modal-form {
+  height: 280px;
+  width: 500px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+}
+
+.change_pass_modal-form h2 {
+  padding-bottom: 40px;
+}
+
+.change_pass_modal-buttons {
+  position: absolute;
+  bottom: 20px;
+  width: 500px;
+  display: flex;
+  gap: 10px;
 }
