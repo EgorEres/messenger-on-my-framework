@@ -7,7 +7,6 @@ import Settings from "./pages/settings/index";
 import Chats from "./pages/chats/index";
 
 const router = new Router();
-
 router.default(Page404);
 router.use("/", Login);
 router.use("/sign-up", Registration);
