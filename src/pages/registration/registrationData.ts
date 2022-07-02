@@ -4,7 +4,7 @@ const data = {
   button: new Button({
     id: "login-sign-in",
     buttonText: "Войти",
-    className: "_global-style__secondary-button",
+    className: "secondary-button",
   }).render(),
   mainError: "",
   children: [

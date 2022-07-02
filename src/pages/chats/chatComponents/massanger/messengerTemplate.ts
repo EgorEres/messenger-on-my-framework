@@ -1,6 +1,6 @@
-const messengerTemplate = `<div id="id" class="_chats__messages-list">
+const messengerTemplate = `<div id="id" class="messages-list">
   {{#each messages}}
-    <p class='_chats__message-direction-{{direction}}'>{{createdAt}}: {{message}}</p>
+    <p class='message-direction-{{direction}}'>{{createdAt}}: {{message}}</p>
   {{/each}}
 </div>`;
 

@@ -3,7 +3,7 @@ import { LoginPageProps } from "./interfaces";
 
 const data: LoginPageProps = {
   button: new Button({
-    className: "_global-style__secondary-button",
+    className: "secondary-button",
     id: "login-sign-up",
     buttonText: "Зарегистрироваться",
   }).render(),

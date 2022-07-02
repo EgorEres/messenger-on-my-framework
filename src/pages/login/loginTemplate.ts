@@ -1,13 +1,13 @@
-const loginTemplate: string = `<div class='_login__login-wrapper'>
-  <div class='_login__login-block'>
+const loginTemplate: string = `<div class='login-wrapper'>
+  <div class='login-block'>
     <h2>Вход</h2>
-    <form id='login-form' name='login-form' class='_login__inputs-block'>
+    <form id='login-form' name='login-form' class='inputs-block'>
       {{#each inputs}}
         {{{input}}}
       {{/each}}
     </form>
     <p id="mainError">{{mainError}}</p>
-    <div class='_login__buttons-block'>
+    <div class='buttons-block'>
       <input type="submit" value="{{loginButtonText}}" form="login-form">
       {{{button}}}
     </div>

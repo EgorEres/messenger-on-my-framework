@@ -34,7 +34,7 @@ const setCreateChatListenersHelper = (
           addChatInput: {
             ...input,
             error: "Поле не должно быть пустым",
-            inputErrorClassName: "_global-style__error-validation",
+            inputErrorClassName: "error-validation",
           },
         });
       } else {

@@ -74,7 +74,7 @@
   color: #fff;
 }
 
-.messages {
+.wrapper .chat_messages {
   width: 100%;
   background: var(--bg-elem-color);
   font-size: 20px;

@@ -12,7 +12,7 @@ const inputTemplate: string = `
     class="{{inputErrorClassName}} {{className}}"
   />
   {{#if error}}
-    <span class="_global-style__error-validation-input-error">{{error}}</span>
+    <span class="error-validation-input-error">{{error}}</span>
   {{/if}}
 `;
 

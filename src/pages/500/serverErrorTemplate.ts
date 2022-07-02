@@ -1,5 +1,5 @@
-const serverErrorTemplate: string = `<div class='_global-style__position-on-center'>
-  <div class='_serverErrorPage__wrapper'>
+const serverErrorTemplate: string = `<div class='position-on-center'>
+  <div class='wrapper'>
     <h2>{{description}}</h2>
     <p>{{title}}</p>
     {{{button}}}

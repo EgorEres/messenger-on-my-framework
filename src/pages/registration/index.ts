@@ -34,7 +34,7 @@ class Registration extends Block {
           return {
             ...childData,
             error: "Поле не должно быть пустым",
-            inputErrorClassName: "_global-style__error-validation",
+            inputErrorClassName: "error-validation",
           };
         }
         return childData;
@@ -69,7 +69,7 @@ class Registration extends Block {
                 return {
                   ...childData,
                   error: text,
-                  inputErrorClassName: "_global-style__error-validation",
+                  inputErrorClassName: "error-validation",
                 };
               }
               return childData;

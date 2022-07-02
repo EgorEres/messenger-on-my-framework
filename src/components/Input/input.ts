@@ -43,7 +43,7 @@ export default class Input extends Block {
           this.setProps({
             error: validationText,
             value,
-            inputErrorClassName: "_global-style__error-validation",
+            inputErrorClassName: "error-validation",
           });
         } else {
           this.setProps({
