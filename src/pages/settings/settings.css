@@ -3,6 +3,7 @@
 }
 
 .settings-block {
+  position: absolute;
   width: 350px;
   background: var(--modal-bg-color);
   height: 650px;
@@ -144,4 +145,8 @@
   width: 500px;
   display: flex;
   gap: 10px;
+}
+
+.avatar-fb-text {
+  font-size: 10px;
 }

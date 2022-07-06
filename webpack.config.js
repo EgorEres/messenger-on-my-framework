@@ -4,11 +4,11 @@ const CopyPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
-  mode: "development",
   entry: "./src/router.ts",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "CHAT.bundle.js",
+    publicPath: "/",
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -30,7 +30,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.ts?$/,
         use: [
           {
             loader: "ts-loader",
@@ -53,11 +53,12 @@ module.exports = {
     ],
   },
   devServer: {
+    historyApiFallback: true,
     static: {
       directory: path.resolve(__dirname, "dist"),
     },
     hot: true,
     compress: true,
-    port: 3000,
+    port: process.env.PORT || 3030,
   },
 };

@@ -12,7 +12,7 @@ const settingsTemplate = `<div class='position-on-center wrapper'>
       Avatar
     </label>
     </div>
-    <p>
+    <p class='avatar-fb-text'>
     {{#if avatar.isSuccessLoad}}
       Новое изображение успешно загружено
     {{/if}}

@@ -5,9 +5,13 @@
   "browserslist": "last 2 versions",
   "scripts": {
     "build": "node ./node_modules/.bin/webpack",
-    "start": "webpack serve",
-    "lint": "eslint . --ext .ts",
+    "start:dev": "webpack serve --mode=development",
+    "start": "webpack serve --mode=production",
+    "lint": "lint-staged",
     "test": "./node_modules/.bin/mocha"
+  },
+  "lint-staged": {
+    "*.{ts}": "eslint --fix"
   },
   "husky": {
     "hooks": {
@@ -48,6 +52,7 @@
     "eslint-plugin-react": "7.26.1",
     "html-webpack-plugin": "5.5.0",
     "husky": "8.0.0",
+    "lint-staged": "13.0.3",
     "mini-css-extract-plugin": "2.6.1",
     "mocha": "10.0.0",
     "postcss": "8.3.6",
