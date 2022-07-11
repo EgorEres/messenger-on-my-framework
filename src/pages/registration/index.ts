@@ -55,7 +55,12 @@ class Registration extends Block {
 
         userApi.postUserSignUp(registrationData).then((res) => {
           if (res.id) {
-            router.go("/messenger");
+            userApi.getUser().then((userData) => {
+              if (userData) {
+                localStorage.setItem("user", JSON.stringify(userData));
+                router.go("/messenger");
+              }
+            });
             return;
           }
           if (res.errorText) {

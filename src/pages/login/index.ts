@@ -62,7 +62,12 @@ class Login extends Block {
         // TODO добавить спинер пока ждем ответ
         userApi.postUserSignIn(authData).then((res) => {
           if (res === "OK") {
-            router.go("/messenger");
+            userApi.getUser().then((userData) => {
+              if (userData) {
+                localStorage.setItem("user", JSON.stringify(userData));
+                router.go("/messenger");
+              }
+            });
           }
           if (res.errorText) {
             this._element!.querySelector("#mainError")!.innerHTML =

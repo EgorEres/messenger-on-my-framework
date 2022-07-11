@@ -22,9 +22,6 @@ const chatsTemplate: string = `<div class='wrapper'>
       >
         <span>создать чат</span>
       </div>
-      <div class='contact' id="go-to-500">
-        <span>посмотреть 500</span>
-      </div>
     </footer>
   </div>
   <div id='chat-section' class='section'></div>
@@ -33,7 +30,7 @@ const chatsTemplate: string = `<div class='wrapper'>
     <container>
       {{#each users}}
         <div class='user'>
-          {{display_name}}
+          {{login}}
         </div>
       {{/each}}
     </container>
