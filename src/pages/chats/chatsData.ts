@@ -2,19 +2,7 @@ import { PageChatsPropsType } from "./types";
 
 const data: PageChatsPropsType = {
   chats: [],
-  users: [
-    {
-      id: 123,
-      first_name: "petya",
-      second_name: "petrov",
-      display_name: "petya petrov",
-      login: "my-login",
-      email: "my@email.com",
-      phone: "89223332211",
-      avatar: "/path/to/my-file.jpg",
-      role: "admin",
-    },
-  ],
+  users: [],
   addChatInput: {
     name: "Название",
     type: "text",

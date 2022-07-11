@@ -23,7 +23,7 @@ const changePassHelper = (element, inputs, setProps) => {
         return {
           ...input,
           error: "Поле не должно быть пустым",
-          inputErrorClassName: "_global-style__error-validation",
+          inputErrorClassName: "error-validation",
         };
       }
       return input;

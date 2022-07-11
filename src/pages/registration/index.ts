@@ -34,7 +34,7 @@ class Registration extends Block {
           return {
             ...childData,
             error: "Поле не должно быть пустым",
-            inputErrorClassName: "_global-style__error-validation",
+            inputErrorClassName: "error-validation",
           };
         }
         return childData;
@@ -55,7 +55,12 @@ class Registration extends Block {
 
         userApi.postUserSignUp(registrationData).then((res) => {
           if (res.id) {
-            router.go("/messenger");
+            userApi.getUser().then((userData) => {
+              if (userData) {
+                localStorage.setItem("user", JSON.stringify(userData));
+                router.go("/messenger");
+              }
+            });
             return;
           }
           if (res.errorText) {
@@ -69,7 +74,7 @@ class Registration extends Block {
                 return {
                   ...childData,
                   error: text,
-                  inputErrorClassName: "_global-style__error-validation",
+                  inputErrorClassName: "error-validation",
                 };
               }
               return childData;

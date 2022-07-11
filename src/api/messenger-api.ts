@@ -60,8 +60,7 @@ function addUsersToChat(data: AddUsersToChatDataType) {
         const errorText = JSON.parse(res.response)?.reason;
         return { errorText };
       }
-
-      return JSON.parse(res.response);
+      return res.response;
     })
     .catch((err) => {
       console.error(err);

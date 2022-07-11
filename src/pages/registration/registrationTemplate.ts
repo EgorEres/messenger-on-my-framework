@@ -1,7 +1,7 @@
-const registrationTemplate = `<div class='_registration__registration-wrapper'>
-  <div class='_registration__registration-block'>
+const registrationTemplate = `<div class='registration-wrapper'>
+  <div class='registration-block'>
     <h2>Регистрация</h2>
-    <form class='_registration__inputs-block' id='registration-form'>
+    <form class='inputs-block' id='registration-form'>
       {{#each inputs}}
         {{{input}}}
       {{/each}}
@@ -9,7 +9,7 @@ const registrationTemplate = `<div class='_registration__registration-wrapper'>
 
     <p id="mainError">{{mainError}}</p>
     
-    <div class='_registration__buttons-block'>
+    <div class='buttons-block'>
       <input type="submit" value="Зарегистрироваться" form="registration-form">
       {{{button}}}
     </div>

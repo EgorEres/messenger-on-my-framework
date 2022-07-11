@@ -2,8 +2,14 @@ import settingsApi from "../../../api/settings-api";
 
 const fieldNames = ["first_name", "second_name", "login", "email", "phone"];
 
+type ProfileType = {
+  display_name?: string;
+  first_name?: string;
+  second_name?: string;
+};
+
 const getChangedFields = (formData) => {
-  const profile = {};
+  const profile: ProfileType = {};
   fieldNames.forEach((name) => {
     const value = formData.get(name);
     profile[name] = value;
@@ -25,7 +31,7 @@ const changeUserDataHelper = (element, inputs, setProps) => {
         return {
           ...input,
           error: "Поле не должно быть пустым",
-          inputErrorClassName: "_global-style__error-validation",
+          inputErrorClassName: "error-validation",
         };
       }
       return input;

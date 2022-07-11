@@ -28,8 +28,8 @@ class Chats extends Block {
     addUserToChatHelper(this._element, this.setProps, this.props);
 
     // отрисовываем чаты
-    if (this.props.activeChats) {
-      const chatData = this.props.chats.find(({ id }) => this.props.activeChats === id);
+    if (this.props.activeChat) {
+      const chatData = this.props.chats.find(({ id }) => this.props.activeChat === id);
       const messengerContent = new Messenger({
         ...chatData,
         messages: [],
